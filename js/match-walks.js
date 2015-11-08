@@ -54,8 +54,10 @@ function isNear(ASrc,ADest,BSrc,BDest) {
           }
         };
       };*/
-      $("#abc").html(results[0][0]);
-      $("#abc").html(results[1][1]);
+      if(results[0][0]<5 && results[1][1]<5)
+      	return true;
+      else 
+      	return false;
     }
   });
 }
@@ -73,6 +75,7 @@ function deleteMarkers(markersArray) {
 function findClosestWalks(walk_res){
 	//var walk_obj = JSON.parse(walk_res);
 	//var myFirstName = getFName();
+	console.log(walk_res);
 	var closeWalks =[];
 	var mywalks =[];
 	for(var i=0;i<walk_res.length;i++){
