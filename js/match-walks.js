@@ -84,7 +84,11 @@ function isNear(ASrc,ADest,BSrc,BDest) {
 	return true;
 }*/
 
-function findClosestWalks(walk_res){
+function findClosestWalks(callback){
+	var walk_res;
+	getAllEvents(function(walks){
+    walk_res= JSON.stringify(walks);
+	}
 	//var walk_obj = JSON.parse(walk_res);
 	//var myFirstName = getFName();
 	//console.log(walk_res);
