@@ -117,7 +117,8 @@ function addToDatabase()
   {
     value = 1;
   }
-  var authName= getFName(authData);
+  var authName= "da";
+  //getFName(authData);
 
   alert(authName);
   var jsonObj={
