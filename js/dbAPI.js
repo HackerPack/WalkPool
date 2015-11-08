@@ -18,7 +18,8 @@ function createWalkEvent(eventData){						//Event details from front end
 			"Longitude" : eventData.Destination.Longitude},
 		"ArrivingTime" : eventData.ArrivingTime,
 		"Recurring" : eventData.Recurring,
-		"Walked" : "false"
+		"Walked" : "false",
+		"Invitee" : {}
 	});
 }
 
