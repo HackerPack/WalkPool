@@ -106,26 +106,27 @@ function getAcceptance() {
 	return acceptanceData;
 }
 
-function getAllEvents() {
+function getAllEvents(callback) {
 	var allEvents = [];
 	ref.child("WalkEvent").once("value", function(eventList){
 		eventList.forEach(function(eventSnap) {
 			var eventID = eventSnap.key();
 			var uid = eventSnap.val().UID;
+			var eventSnap = eventSnap.val();
 				//allEvents.push(eventSnap);
 
 				 allEvents.push({
-					 	 EventID : "$eventID",
-					 	 UID : "$uid",
-						 Source: {Latitude: "$eventSnap.Source.Latitude", Longitude: "$eventSnap.Source.Longitude"},
-						 Destination: {Latitude: "$eventSnap.Destination.Latitude", Longitude: "$eventSnap.Destination.Longitude"},
-						 ArrivingTime: "$eventSnap.ArrivingTime",
-						 Recurring: "$eventSnap.Recurring"});
+					 	 EventID : eventID,
+					 	 UID : uid,
+						 Source: {Latitude: eventSnap.Source.Latitude, Longitude: eventSnap.Source.Longitude},
+						 Destination: {Latitude: eventSnap.Destination.Latitude, Longitude: eventSnap.Destination.Longitude},
+						 ArrivingTime: eventSnap.ArrivingTime,
+						 Recurring: eventSnap.Recurring});
 				});
+
+			console.log(allEvents);
+			callback(allEvents);
 	});
-	var allEv = JSON.stringify(allEvents);
-	console.log(allEvents);
-	return allEvents;
 }
 
 function read_user(){
