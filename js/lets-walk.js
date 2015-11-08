@@ -110,7 +110,7 @@ function dateTime() {
 }
 function addToDatabase()
 {
-  var inputDateTime = document.getElementById('datetimepicker1');
+  var inputDateTime = document.getElementById('datetimepicker2');
   var val = $('input[name="recurring"]:checked').val();
   var value = null;
   if(val=="daily")
@@ -131,11 +131,9 @@ function addToDatabase()
      "Latitude" : endLat,
      "Longitude" : endLong,
  },
- "ArrivingTime" : inputDateTime,
+ "ArrivingTime" : inputDateTime.value,
 "Recurring": value
 };
 createWalkEvent(jsonObj);
-var jsonObj = JSON.stringify(jsonObj);
-alert(jsonObj);
 
 }
