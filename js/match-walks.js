@@ -1,12 +1,12 @@
 var myFirstName = 'shivani';
-function initMap() {
+function isNear(ASrc,ADest,BSrc,BDest) {
   var bounds = new google.maps.LatLngBounds;
   //var markersArray = [];
 
-  var ASrc = {lat: 55.93, lng: -3.118};
+  /*var ASrc = {lat: 55.93, lng: -3.118};
   var BSrc = {lat: 55.93, lng: -3.118};
   var ADest = {lat: 55.93, lng: -3.118};
-  var BDest = {lat: 55.93, lng: -3.118};
+  var BDest = {lat: 55.93, lng: -3.118};*/
   //var origin2 = 'Greenwich, England';
   //var destinationA = 'Stockholm, Sweden';
   //var destinationB = {lat: 50.087, lng: 14.421};
@@ -66,9 +66,9 @@ function deleteMarkers(markersArray) {
   }
   markersArray = [];
 }
-function isNear(ASrc,ADest,BSrc,BDest){
+/*function isNear(ASrc,ADest,BSrc,BDest){
 	return true;
-}
+}*/
 
 function findClosestWalks(walk_res){
 	//var walk_obj = JSON.parse(walk_res);
@@ -94,13 +94,14 @@ function findClosestWalks(walk_res){
 				continue;
 			}
 			else{
-				var todayDate = new Date();
-				var objectDate = new Date(key.Date);
+				//var todayDate = new Date();
+				//var objectDate = new Date(walk_res[j].Date);
 				//${#abc}.html(todayDate);
 				//${#abc}.html(objectDate);
-				if(todayDate === objectDate &to& isNear(mywalks[i].Source,mywalks[i].Destination,
+				if(//todayDate === objectDate &to& 
+					isNear(mywalks[i].Source,mywalks[i].Destination,
 													  walk_res[j].Source,walk_res[j].Destination)){
-					closeWalks.push(key);
+					closeWalks.push(walk_res[j]);
 					$("#abc").html("got my close walk");
 				}
 			}
@@ -125,4 +126,5 @@ function findClosestWalks(walk_res){
 			}
 		}
 	})*/
+	return closeWalks;
 }
