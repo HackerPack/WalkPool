@@ -68,8 +68,8 @@ function isNear(ASrc,ADest,BSrc,BDest) {
       	
       else 
       	return false;
-    }
-  });
+    //}
+  //});
 }
 
 /*function isNear(ASrc,ADest,BSrc,BDest){
