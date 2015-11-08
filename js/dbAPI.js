@@ -30,7 +30,7 @@ function createWalkRequest(myEventId, inviteeEventID){
 		{
 		console.log(childsnapshot.val());
 		console.log(childsnapshot.val().UID);
-		}
+		});
 		//inviteeUID = snapshot.val().UID;
 	});
 	
