@@ -21,7 +21,7 @@ function isNear(ASrc,ADest,BSrc,BDest) {
   //});
   var geocoder = new google.maps.Geocoder;
 
-  var service = new google.maps.DistanceMatrixService;
+ /* var service = new google.maps.DistanceMatrixService;
   service.getDistanceMatrix({
     origins: [Src1, Dest1],
     destinations: [Src2, Dest2],
@@ -53,19 +53,31 @@ function isNear(ASrc,ADest,BSrc,BDest) {
             alert('Geocode was not successful due to: ' + status);
           }
         };
-      };*/
+      };
       console.log(Src1);
       console.log(Src2);
       console.log(Dest1);
       console.log(Dest2);
       console.log(results[0][0]);
-      console.log(results[1][1]);
-      if(results[0][0]<5 && results[1][1]<100)
+      console.log(results[1][1]);*/
+      var x = google.maps.geometry.spherical.computeDistanceBetween(Src1,Src2);
+      var y = google.maps.geometry.spherical.computeDistanceBetween(Dest1,Dest2);
+      if(x < 500000000 && y < 500000000){
+      	console.log("DONE!!");
+      	console.log(x);
+      	console.log(y);
       	return true;
-      else 
+      }
+      //if(results[0][0]<5 && results[1][1]<100)
+      	
+      else {
+      	console.log(x);
+      	console.log(y);
       	return false;
-    }
-  });
+      }
+      	
+    //}
+  //});
 }
 
 /*function isNear(ASrc,ADest,BSrc,BDest){
