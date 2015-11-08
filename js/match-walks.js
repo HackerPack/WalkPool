@@ -69,8 +69,8 @@ function isNear(ASrc,ADest,BSrc,BDest) {
       //if(results[0][0]<5 && results[1][1]<100)
       	
       else {
-      	return false;
       	console.log(x);
+      	return false;
       }
       	
     //}
