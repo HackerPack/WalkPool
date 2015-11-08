@@ -1,5 +1,5 @@
 var authData = ref.getAuth();
-var myFirstName = authData.UID;
+var myFirstName = authData.uid;
 function isNear(ASrc,ADest,BSrc,BDest) {
   var bounds = new google.maps.LatLngBounds;
   //var markersArray = [];
