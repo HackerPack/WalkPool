@@ -59,11 +59,13 @@ function getRequest() {
 		requestList.forEach(function(request) {
 			ref.child("WalkEvent").orderByKey().equalTo(request.val().WalkEventID).once("value",function(eventSnap){
 				var FName;
+				var requestID = request.key();
 				ref.child("Users").orderByKey().equalTo(eventSnap.UID).once("value", function(userSnap){
 					FName = userSnap.val().FirstName;
 				})
 				
 				requestData.push(
+						"RequestID" : "$requestID",
 						"FirstName" : "$FName",
 						"Source": {"Latitude": "$eventSnap.Source.Latitude", "Longitude": "$eventSnap.Source.Longitude"},
 						"Destination": {"Latitude": "$eventSnap.Destination.Latitude", "Longitude": "$eventSnap.Destination.Longitude"},
