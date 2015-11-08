@@ -106,7 +106,7 @@ function getAcceptance() {
 }
 
 function getAllEvents() {
-	var allEvents[];
+	var allEvents=[];
 	ref.child("WalkEvent").once("value", function(eventList){
 		eventList.forEach(function(eventSnap) {
 			var eventID = eventSnap.key();
