@@ -39,6 +39,7 @@ function createWalkRequest(myEventId, inviteeEventID){		//Requester event ID, In
 			"Accepted" : "false"
 		});
 	});	
+	alert("We will send an invitation to your friend");
 }
 
 function updateAcceptance(requestID){						//Request ID accepted by the user

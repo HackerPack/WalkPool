@@ -152,5 +152,6 @@ function addToDatabase()
 "Recurring": value
 };
 createWalkEvent(jsonObj);
+alert("Congratulations, Please go to Share a Walk page to see who you can share with");
 
 }

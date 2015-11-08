@@ -116,7 +116,7 @@
 			
 		</div><!-- /container -->
 		<script type="text/javascript">
-		getRequest(function(array){
+		/*getRequest(function(array){
 
 			console.log(array.length);
 			for(var i =0;i<array.length;i++)
@@ -127,9 +127,9 @@
 //console.log(pp.FirstName);
 
 			}
-		});
+		});*/
   // var j = ;
-/*var array = [{
+var array = [{
  "FirstName" : "Jack",
  "Source" : {
      "Latitude" : "35",
@@ -156,11 +156,20 @@
  "ArrivingTime" : "2011-04-11T11:51:00",
 "Recurring": 0
 }];
+for(var i =0;i<array.length;i++)
+			{
+ //var pp= JSON.parse(array[i]);
+				$("#row12").append('<tr i align=center><td  class=user-name >'+array[i].FirstName+'invited you for a walk pool on '+array[i].RequestID+'</td><td><button type="button" onclick="accept()">Accept</button></td></tr>');
+
+//console.log(pp.FirstName);
+
+			}
+			/*
 createWalkRequest("-K2b4JpAA67aR092_Ci6", "-K2anAFNggIQt_XHSeR_");
 getRequest(function(invitations){
         console.log(invitations);
     });
-*/
+
 //array =[];
 
 //console.log(rr);

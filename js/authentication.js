@@ -1,5 +1,5 @@
 function accept()
 {
 
-	console.log("accepting");
+	alert("Wohooo!!!We will notify an hour before your walk...");
 }
