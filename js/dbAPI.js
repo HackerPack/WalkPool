@@ -112,7 +112,6 @@ function getAllEvents() {
 		eventList.forEach(function(eventSnap) {
 			var eventID = eventSnap.key();
 			var uid = eventSnap.val().UID;
-				console.log(eventID);
 
 				 allEvents.push({
 					 	 "EventID" : "$eventID",
