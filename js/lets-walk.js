@@ -117,7 +117,7 @@ function addToDatabase()
   {
     value = 1;
   }
-  alert(getFName());
+  alert(getFName(authData));
   /*var json='{
  "FirstName" : "'+getFName()+'",
  "Source" : {
