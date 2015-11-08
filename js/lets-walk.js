@@ -133,7 +133,7 @@ function addToDatabase()
  "ArrivingTime" : inputDateTime,
 "Recurring": value
 };
+var jsonObj = JSON.stringify(jsonObj);
 alert(jsonObj);
-  alert(inputDateTime + startLat + " " + startLong +" " + endLat +" " + endLong+ " " +value );
 
 }
