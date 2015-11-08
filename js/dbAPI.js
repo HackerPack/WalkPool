@@ -76,7 +76,7 @@ var requestData = [];
 				});
 			});
 		});
-		callback(acceptanceData);
+		callback(requestData);
 	});
 }
 
