@@ -24,8 +24,8 @@ function isNear(ASrc,ADest,BSrc,BDest) {
 
   var service = new google.maps.DistanceMatrixService;
   service.getDistanceMatrix({
-    origins: [Src1, Dest1],
-    destinations: [Src2, Dest2],
+    origins: [Src1, Dest1];
+    destinations: [Src2, Dest2];
     console.log(origins);
     console.log(destinations);
     travelMode: google.maps.TravelMode.WALKING,
