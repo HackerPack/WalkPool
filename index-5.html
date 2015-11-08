@@ -122,7 +122,7 @@
 			for(var i =0;i<array.length;i++)
 			{
  //var pp= JSON.parse(array[i]);
-				$("#row12").append('<tr i align=center><td  class=user-name >'+array[i].UID+'invited you for a walk pool on '+array[i].WalkEventID+'</td><td><button type="button" onclick="accept()">Accept</button></td></tr>');
+				$("#row12").append('<tr i align=center><td  class=user-name >'+array[i].FirstName+'invited you for a walk pool on '+array[i].RequestID+'</td><td><button type="button" onclick="updateAcceptance('+array[i].RequestID+');accept()">Accept</button></td></tr>');
 
 //console.log(pp.FirstName);
 
