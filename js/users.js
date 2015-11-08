@@ -7,6 +7,15 @@ function add_user(authData){
 	});
 }
 
+function search_user(authData)
+{
+	db_ref.child("Users").equalTo(authData.uid).once("value", function(snapshot){
+		return true;
+	}, function(error){
+		return false;
+	});
+}
+
 function read_user(){
 	
 	
