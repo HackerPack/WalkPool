@@ -123,6 +123,7 @@ function getAllEvents() {
 				});
 		});
 	});
+	alert(allEvents);
 	return allEvents;
 }
 
