@@ -26,8 +26,10 @@ function createWalkRequest(myEventId, inviteeEventID){
 		//Requester event ID, Invitee Event ID
 	var inviteeUID;
 	ref.child("WalkEvent").orderByKey().equalTo(inviteeEventID.toString()).once("value", function(snapshot){
-		console.log(snapshot.child("UID").val());
-		inviteeUID = snapshot.val().UID;
+		snapshot.forEach(function(childSnapshot))
+		console.log(childsnapshot.val());
+		console.log(childsnapshot.val().UID);
+		//inviteeUID = snapshot.val().UID;
 	});
 	
 	/*ref.child("WalkEvent/$myEventId/Invitee").update({
