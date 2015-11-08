@@ -109,7 +109,6 @@ function getAcceptance() {
 function getAllEvents() {
 	var allEvents = [];
 	ref.child("WalkEvent").once("value", function(eventList){
-		alert("Inside eventlist");
 		eventList.forEach(function(eventSnap) {
 			var eventID = eventSnap.key();
 			var uid = eventSnap.val().UID;
@@ -124,7 +123,7 @@ function getAllEvents() {
 						 "Recurring": "$eventSnap.Recurring"});
 				});
 	});
-	console.log(allEvents[0]);
+	console.log(allEvents);
 	return allEvents;
 }
 
