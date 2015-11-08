@@ -48,7 +48,7 @@ function updateAcceptance(requestID){						//Request ID accepted by the user
 	
 	inviteeUID = ref.getAuth().uid;
 	
-	ref.child("WalkRequest/$requestID/Invitee").update({
+	ref.child("WalkRequest").child(requestID).child("Invitee").update({
 		"$inviteeUID" : "true"
 	});
 }
