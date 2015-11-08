@@ -75,7 +75,7 @@ function deleteMarkers(markersArray) {
 function findClosestWalks(walk_res){
 	//var walk_obj = JSON.parse(walk_res);
 	//var myFirstName = getFName();
-	console.log(walk_res);
+	//console.log(walk_res);
 	var closeWalks =[];
 	var mywalks =[];
 	for(var i=0;i<walk_res.length;i++){
@@ -89,6 +89,7 @@ function findClosestWalks(walk_res){
 			$("#abc").html("got my walk");
 		}
 	})*/
+	console.log(myFirstName);
 	console.log(mywalks);
 	for(var i=0;i<mywalks.length;i++){
 		for(var j=0;j<walk_res.length;j++){
