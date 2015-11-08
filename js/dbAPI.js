@@ -124,7 +124,7 @@ function getAllEvents() {
 				});
 	});
 	var allEv = JSON.stringify(allEvents);
-	console.log(allEv);
+	console.log(allEvents);
 	return allEvents;
 }
 
