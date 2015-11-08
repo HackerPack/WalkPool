@@ -113,6 +113,7 @@ function findClosestWalks(callback){
 				continue;
 			}
 			else{
+				
 				//var todayDate = new Date();
 				//var objectDate = new Date(walk_res[j].Date);
 				//${#abc}.html(todayDate);

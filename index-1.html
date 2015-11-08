@@ -12,6 +12,8 @@
 	<script src="js/jquery-migrate-1.2.1.js"></script>
 	<script src="js/jquery.stellar.js"></script>
 	<script src="js/script.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQf4f8pMlnmHj__IkX_fKLcjRL5VtGMTE&signed_in=true&libraries=geometry&sensor=false"
+        async defer></script>
 	<script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
 	<script src="js/fire_base_constants.js"></script>
 	<script src="js/dbAPI.js"></script>
@@ -100,6 +102,7 @@
 	</div>
 	</section>
 <script type="text/javascript">
+/*
 var array = [{"EventID":"0","UID":"facebook:10207308437885698","Source":{"Latitude":36.00672199999999,"Longitude":-78.93727969999998},"Destination":{"Latitude":36.00415410000001,"Longitude":-78.93949309999999},"ArrivingTime":"04/11/2015 06:12:27","Recurring":1},
 {"EventID":"1","UID":"facebook:10207308437885698","Source":{"Latitude":36.00672199999999,"Longitude":-78.93727969999998},"Destination":{"Latitude":36.00415410000001,"Longitude":-78.93949309999999},"ArrivingTime":"04/11/2015 06:12:27","Recurring":1}];
 
@@ -132,6 +135,13 @@ if(array.length == 0)
 </footer>
 <script>
 	$(document).ready(function() { 
+		findClosestWalks(function(array){
+			for(var i =0;i<(array.length-1);i+=2)
+			{
+				var uname = get_name_from_uid(array[i].UID);
+			$("#row12").append('<tr i align=center><td  class=user-name >'+uname+'</td><td  class=user-name >'+array[i+1].EventID+'</td><td> <button type="button" onclick=createWalkRequest('+array[i].EventID +','+ array[i+1].EventID+');>Invite</button></td></tr>');
+			}
+		});
 			if ($('html').hasClass('desktop')) {
 				$.stellar({
 					horizontalScrolling: false,
