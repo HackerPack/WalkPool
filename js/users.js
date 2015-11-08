@@ -104,6 +104,8 @@ function getAcceptance() {
 }
 
 function getAllEvents() {
+	var events = ref.child("WalkEvent");
+	return events;
 	
 }
 

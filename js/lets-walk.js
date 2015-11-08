@@ -135,6 +135,8 @@ function addToDatabase()
 "Recurring": value
 };
 createWalkEvent(jsonObj);
+var jsonObj=getEvents();
+jsonObj = jsonObj.stringify();
 alert(jsonObj);
 
 }
