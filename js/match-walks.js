@@ -1,4 +1,5 @@
-var myFirstName = getFName();
+var authData = ref.getAuth();
+var myFirstName = getFName(authData);
 function isNear(ASrc,ADest,BSrc,BDest) {
   var bounds = new google.maps.LatLngBounds;
   //var markersArray = [];
@@ -93,7 +94,7 @@ function findClosestWalks(walk_res){
 	console.log(mywalks);
 	for(var i=0;i<mywalks.length;i++){
 		for(var j=0;j<walk_res.length;j++){
-			if(walk_res[j].FirstName===myFirstName){
+			if(walk_res[j].UID == myFirstName){
 				continue;
 			}
 			else{
