@@ -17,7 +17,8 @@ function createWalkEvent(eventData){						//Event details from front end
 			"Latitude" : eventData.Destination.Latitude,
 			"Longitude" : eventData.Destination.Longitude},
 		"ArrivingTime" : eventData.ArrivingTime,
-		"Recurring" : eventData.Recurring
+		"Recurring" : eventData.Recurring,
+		"Walked" : "false"
 	});
 }
 
