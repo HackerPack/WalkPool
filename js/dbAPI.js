@@ -112,20 +112,17 @@ function getAllEvents() {
 		alert("Inside eventlist");
 		eventList.forEach(function(eventSnap) {
 			var eventID = eventSnap.key();
-			ref.child("Users/$eventSnap.val().UID").once("value",function(userDataSnap){
-				 var userFName = userDataSnap.val().FirstName;
-		console.log("FNAME"+userFName);
-		console.log(eventID);
+			var uid = eventSnap.val().UID;
+				console.log(eventID);
 
 				 allEvents.push({
 					 	 "EventID" : "$eventID",
-						 "FirstName" : "$userFName",
+					 	 "UID" : "$uid",
 						 "Source": {"Latitude": "$eventSnap.Source.Latitude", "Longitude": "$eventSnap.Source.Longitude"},
 						 "Destination": {"Latitude": "$eventSnap.Destination.Latitude", "Longitude": "$eventSnap.Destination.Longitude"},
 						 "ArrivingTime": "$eventSnap.ArrivingTime",
 						 "Recurring": "$eventSnap.Recurring"});
 				});
-		});
 	});
 	console.log(allEvents[0]);
 	return allEvents;
