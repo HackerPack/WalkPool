@@ -1,3 +1,7 @@
+function inviteFriend()
+{
+	alert("We will be notifying your friend. Thanks ");
+}
 function search_user(authData)
 {
 	ref.child("Users").orderByKey().equalTo(authData.uid).once("value", function(snapshot){
@@ -141,4 +145,5 @@ function get_name_from_uid(uid, callback){
 	user.once("value",function(data){
 		callback(data.val());
 	});
+
 }

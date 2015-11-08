@@ -135,7 +135,7 @@ if(array.length == 0)
 				var dest_long = array[i+1].Destination.Longitude;
 				var ArrivalTime = array[i+1].ArrivingTime;
 				get_name_from_uid(uid, function(uname){
-					$("#row12").append('<tr i align=center><td  class=user-name >'+uname+'</td><td>'+source_lat+'</td><td>'+source_long+'</td><td>'+dest_lat+'</td><td>'+dest_long+'</td><td>'+ArrivalTime+'</td><td> <button type="button" onclick=createWalkRequest('+eventID +','+ eventID2+');>Invite</button></td></tr>');
+					$("#row12").append('<tr i align=center><td  class=user-name >'+uname+'</td><td>'+source_lat+'</td><td>'+source_long+'</td><td>'+dest_lat+'</td><td>'+dest_long+'</td><td>'+ArrivalTime+'</td><td> <button type="button" onclick=inviteFriend();>Invite</button></td></tr>');
 				});
 			}
 		});
