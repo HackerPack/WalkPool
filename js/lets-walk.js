@@ -106,4 +106,11 @@ function initMap() {
 }
 function dateTime() {
   alert("Hey");
+
+  new DatePicker('.demo_time', { pickerClass: 'datepicker_vista', timePicker: true, format: 'd-m-Y @ H:i' });
+}
+function addToDatabase()
+{
+  alert("Jey");
+
 }
