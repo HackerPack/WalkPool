@@ -80,7 +80,7 @@ function findClosestWalks(walk_res){
 	var closeWalks =[];
 	var mywalks =[];
 	for(var i=0;i<walk_res.length;i++){
-		if(walk_res[i].FirstName === myFirstName){
+		if(walk_res[i].UID === myFirstName){
 			mywalks.push(walk_res[i]);
 		}
 	}
