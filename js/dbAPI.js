@@ -53,81 +53,104 @@ function updateAcceptance(requestID){						//Request ID accepted by the user
 	});
 }
 
-function getRequest() {
+function getRequest(callback) {
 	var requestData = [];
 	
-	ref.child("WalkRequest").orderByChild("UID").equalTo(req.getAuth().uid).once("value", function(requestList) {
+	ref.child("WalkRequest").orderByChild("UID").equalTo(ref.getAuth().uid).once("value", function(requestList) {
 		
 		requestList.forEach(function(request) {
 			ref.child("WalkEvent").orderByKey().equalTo(request.val().WalkEventID).once("value",function(eventSnap){
-				var FName;
-				var requestID = request.key();
-				ref.child("Users").orderByKey().equalTo(eventSnap.UID).once("value", function(userSnap){
-					FName = userSnap.val().FirstName;
+				var eventVal = eventSnap.val();
+				var request = request.val();
+				ref.child("Users").child(eventSnap.UID).once("value", function(userSnap){
+					requestData.push({
+							Accepted : request.Accepted,
+							InviteeWalkEventID : request.InviteeWalkEventID,
+							UID: request.UID,
+							WalkEventID: request.WalkEventID});
 				});
-				
-				requestData.push({
-						"RequestID" : "$requestID",
-						"FirstName" : "$FName",
-						"Source": {"Latitude": "$eventSnap.Source.Latitude", "Longitude": "$eventSnap.Source.Longitude"},
-						"Destination": {"Latitude": "$eventSnap.Destination.Latitude", "Longitude": "$eventSnap.Destination.Longitude"},
-						"ArrivingTime": "$eventSnap.ArrivingTime",
-						"Recurring": "$eventSnap.Recurring"});
 			});
 		});
+		callback(requestData);
 	});
-	
-	return requestData;
 }
 
-function getAcceptance() {
+function getAcceptance(callback) {
 	var acceptanceData = [];
-	ref.child("WalkEvent").orderByChild("UID").equalTo(req.getAuth().uid).once("value", function(eventList) {
+	ref.child("WalkEvent").orderByChild("UID").equalTo(ref.getAuth().uid).once("value", function(eventList) {
 		
 		eventList.forEach(function(eventSnap) {
 			var eventID = eventSnap.key();
-			ref.child("WalkEvent/$eventID/Invitee").orderByKey().once("value", function(inviteeList){
+			var eventVal = eventSnap.val();
+			ref.child("WalkEvent").child(eventID).child("Invitee").orderByKey().once("value", function(inviteeList){
 				inviteeList.forEach(function(invitee){
 					 if (invitee.val() == "true") {
-						 ref.child("Users").orderByKey().equalTo(invitee.key()).once("value",function(userDataSnap){
-							 var userFName = userDataSnap.val().FirstName;
+						 ref.child("Users").child(invitee.key()).once("value",function(userDataSnap){
 							 acceptanceData.push({
-									 "FirstName" : "$userFName",
-									 "Source": {"Latitude": "$eventSnap.Source.Latitude", "Longitude": "$eventSnap.Source.Longitude"},
-									 "Destination": {"Latitude": "$eventSnap.Destination.Latitude", "Longitude": "$eventSnap.Destination.Longitude"},
-									 "ArrivingTime": "$eventSnap.ArrivingTime",
-									 "Recurring": "$eventSnap.Recurring"});
+									 FirstName : userDataSnap.val().FirstName,
+									 Source: {Latitude: eventVal.Source.Latitude, Longitude: eventVal.Source.Longitude},
+									 Destination: {Latitude: eventVal.Destination.Latitude, Longitude: eventVal.Destination.Longitude},
+									 ArrivingTime: eventVal.ArrivingTime,
+									 Recurring: eventVal.Recurring});
 						});
 					 }
 				});
 			});
 		});
+		callback(acceptanceData);
 	});	
-	return acceptanceData;
 }
 
 function getAllEvents(callback) {
 	var allEvents = [];
 	ref.child("WalkEvent").once("value", function(eventList){
 		eventList.forEach(function(eventSnap) {
+			var FName;
+			ref.child("Users").child(eventSnap.val().UID).once("value",function(userDataSnap){
+				FName = userDataSnap.val().FirstName;
+			});
 			var eventID = eventSnap.key();
-			var uid = eventSnap.val().UID;
-			var eventSnap = eventSnap.val();
-				//allEvents.push(eventSnap);
+			var eventVal = eventSnap.val();
+			allEvents.push({
+					 FirstName : FName,
+				 	 EventID : eventID,
+				 	 UID : eventVal.UID,
+					 Source : {Latitude: eventVal.Source.Latitude, Longitude: eventVal.Source.Longitude},
+					 Destination : {Latitude: eventVal.Destination.Latitude, Longitude: eventVal.Destination.Longitude},
+					 ArrivingTime : eventVal.ArrivingTime,
+					 Recurring : eventVal.Recurring});
+		});
+		console.log(allEvents);
+		callback(allEvents);
+	});
+}
 
+/*
+function getAllEvents(callback) {
+	var allEvents = [];
+	ref.child("WalkEvent").once("value", function(eventList){
+		eventList.forEach(function(eventSnap) {
+			var FName;
+			ref.child("Users").child(eventSnap.val().UID).once("value",function(userDataSnap){
+				FName = userDataSnap.val().FirstName;
+			});
+			
+			var eventID = eventSnap.key();
+			var eventVal = eventSnap.val();
 				 allEvents.push({
+					 	 FirstName : FName,
 					 	 EventID : eventID,
-					 	 UID : uid,
-						 Source: {Latitude: eventSnap.Source.Latitude, Longitude: eventSnap.Source.Longitude},
-						 Destination: {Latitude: eventSnap.Destination.Latitude, Longitude: eventSnap.Destination.Longitude},
-						 ArrivingTime: eventSnap.ArrivingTime,
-						 Recurring: eventSnap.Recurring});
+					 	 UID : eventVal.UID,
+						 Source: {Latitude: eventVal.Source.Latitude, Longitude: eventVal.Source.Longitude},
+						 Destination: {Latitude: eventVal.Destination.Latitude, Longitude: eventVal.Destination.Longitude},
+						 ArrivingTime: eventVal.ArrivingTime,
+						 Recurring: eventVal.Recurring});
 				});
 
 			console.log(allEvents);
 			callback(allEvents);
 	});
-}
+}*/
 
 function read_user(){
 	var users = ref.child("Users");

@@ -1,13 +1,13 @@
 var authData = ref.getAuth();
-var myFirstName = getFName(authData);
+var myFirstName = authData.uid;
 function isNear(ASrc,ADest,BSrc,BDest) {
   var bounds = new google.maps.LatLngBounds;
   //var markersArray = [];
 
-  /*var ASrc = {lat: 55.93, lng: -3.118};
-  var BSrc = {lat: 55.93, lng: -3.118};
-  var ADest = {lat: 55.93, lng: -3.118};
-  var BDest = {lat: 55.93, lng: -3.118};*/
+  var Src1 = {lat: ASrc.Latitude, lng: ASrc.Longitude};
+  var Dest1 = {lat: ADest.Latitude, lng: ADest.Longitude};
+  var Src2 = {lat: BSrc.Latitude, lng: BSrc.Longitude};
+  var Dest2 = {lat: BDest.Latitude, lng: BDest.Longitude};
   //var origin2 = 'Greenwich, England';
   //var destinationA = 'Stockholm, Sweden';
   //var destinationB = {lat: 50.087, lng: 14.421};
@@ -24,8 +24,8 @@ function isNear(ASrc,ADest,BSrc,BDest) {
 
   var service = new google.maps.DistanceMatrixService;
   service.getDistanceMatrix({
-    origins: [ASrc, ADest],
-    destinations: [BSrc, BDest],
+    origins: [Src1, Dest1],
+    destinations: [Src2, Dest2],
     travelMode: google.maps.TravelMode.WALKING,
     unitSystem: google.maps.UnitSystem.METRIC,
     avoidHighways: true,
@@ -63,12 +63,6 @@ function isNear(ASrc,ADest,BSrc,BDest) {
   });
 }
 
-function deleteMarkers(markersArray) {
-  for (var i = 0; i < markersArray.length; i++) {
-    markersArray[i].setMap(null);
-  }
-  markersArray = [];
-}
 /*function isNear(ASrc,ADest,BSrc,BDest){
 	return true;
 }*/
