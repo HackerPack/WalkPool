@@ -118,22 +118,21 @@ function addToDatabase()
     value = 1;
   }
   var authName= getFName(authData);
-  
+
   alert(authName);
-  var jsonObj="{
- \"FirstName\" : \""+authName+"\",
- \"Source\" : {";
- /*
-     "Latitude" : "'+startLat+'",
-     "Longitude" : "'+startLong+'"
+  var jsonObj={
+ "FirstName" : authName,
+ "Source" : {
+     "Latitude" : startLat,
+     "Longitude" : startLong
  },
  "Destination" : {
-     "Latitude" : "'+endLat+'",
-     "Longitude" : "'+endLong+'"
+     "Latitude" : endLat,
+     "Longitude" : endLong,
  },
- "ArrivingTime" : "'+inputDateTime'",
-"Recurring": '+value+'
-}';*/
+ "ArrivingTime" : inputDateTime,
+"Recurring": value
+};
 alert(jsonObj);
   alert(inputDateTime + startLat + " " + startLong +" " + endLat +" " + endLong+ " " +value );
 
