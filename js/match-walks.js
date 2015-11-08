@@ -1,4 +1,4 @@
-var myFirstName = 'shivani';
+var myFirstName = getFName();
 function isNear(ASrc,ADest,BSrc,BDest) {
   var bounds = new google.maps.LatLngBounds;
   //var markersArray = [];
@@ -81,7 +81,6 @@ function findClosestWalks(walk_res){
 	for(var i=0;i<walk_res.length;i++){
 		if(walk_res[i].FirstName === myFirstName){
 			mywalks.push(walk_res[i]);
-			$("#abc").html("got my walk");
 		}
 	}
 	/*walk_res.forEach(function (value){
@@ -90,10 +89,10 @@ function findClosestWalks(walk_res){
 			$("#abc").html("got my walk");
 		}
 	})*/
+	console.log(mywalks);
 	for(var i=0;i<mywalks.length;i++){
 		for(var j=0;j<walk_res.length;j++){
 			if(walk_res[j].FirstName===myFirstName){
-				$("#abc").html("got my walk again");
 				continue;
 			}
 			else{
@@ -105,11 +104,12 @@ function findClosestWalks(walk_res){
 					isNear(mywalks[i].Source,mywalks[i].Destination,
 													  walk_res[j].Source,walk_res[j].Destination)){
 					closeWalks.push(walk_res[j]);
-					$("#abc").html("got my close walk");
+					//$("#abc").html("got my close walk");
 				}
 			}
 		}
 	}
+	console.log(closeWalks);
 	/*mywalks.forEach( function (value){
 		for(key in walk_res){
 			if(key.FirstName===myFirstName){
