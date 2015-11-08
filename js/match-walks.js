@@ -55,7 +55,13 @@ function isNear(ASrc,ADest,BSrc,BDest) {
           }
         };
       };*/
-      if(results[0][0]<5 && results[1][1]<5)
+      console.log(Src1);
+      console.log(Src2);
+      console.log(Dest1);
+      console.log(Dest2);
+      console.log(results[0][0]);
+      console.log(results[1][1]);
+      if(results[0][0]<5 && results[1][1]<100)
       	return true;
       else 
       	return false;
@@ -74,7 +80,7 @@ function findClosestWalks(walk_res){
 	var closeWalks =[];
 	var mywalks =[];
 	for(var i=0;i<walk_res.length;i++){
-		if(walk_res[i].FirstName === myFirstName){
+		if(walk_res[i].UID === myFirstName){
 			mywalks.push(walk_res[i]);
 		}
 	}
