@@ -118,8 +118,6 @@ function addToDatabase()
     value = 1;
   }
   alert(getFName(authData));
-  var abc='dasda';
-  alert(abc);
   var jsonObj='{
  "FirstName" : "'+getFName(authData)+'",
  "Source" : {
