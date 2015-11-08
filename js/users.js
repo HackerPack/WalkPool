@@ -62,15 +62,15 @@ function getRequest() {
 				var requestID = request.key();
 				ref.child("Users").orderByKey().equalTo(eventSnap.UID).once("value", function(userSnap){
 					FName = userSnap.val().FirstName;
-				})
+				});
 				
-				requestData.push(
+				requestData.push({
 						"RequestID" : "$requestID",
 						"FirstName" : "$FName",
 						"Source": {"Latitude": "$eventSnap.Source.Latitude", "Longitude": "$eventSnap.Source.Longitude"},
 						"Destination": {"Latitude": "$eventSnap.Destination.Latitude", "Longitude": "$eventSnap.Destination.Longitude"},
 						"ArrivingTime": "$eventSnap.ArrivingTime",
-						"Recurring": "$eventSnap.Recurring");
+						"Recurring": "$eventSnap.Recurring"});
 			});
 		});
 	});
@@ -89,15 +89,14 @@ function getAcceptance() {
 					 if (invitee.val() == "true") {
 						 ref.child("Users").orderByKey().equalTo(invitee.key()).once("value",function(userDataSnap){
 							 var userFName = userDataSnap.FirstName;
-							 acceptanceData.push(
+							 acceptanceData.push({
 									 "FirstName" : "userFName",
 									 "Source": {"Latitude": "$eventSnap.Source.Latitude", "Longitude": "$eventSnap.Source.Longitude"},
 									 "Destination": {"Latitude": "$eventSnap.Destination.Latitude", "Longitude": "$eventSnap.Destination.Longitude"},
 									 "ArrivingTime": "$eventSnap.ArrivingTime",
-									 "Recurring": "$eventSnap.Recurring");
+									 "Recurring": "$eventSnap.Recurring"});
 						});
 					 }
-					});
 				});
 			});
 		});
