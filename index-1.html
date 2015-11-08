@@ -141,8 +141,9 @@ if(array.length == 0)
 				var uid = array[i+1].UID;
 				var eventID = array[i].EventID;
 				var eventID2 = array[i+1].EventID;
+				var source_lat = array[i+1].Source.Latitude;
 				get_name_from_uid(uid, function(uname){
-					$("#row12").append('<tr i align=center><td  class=user-name >'+uname+'</td><td>'+array[i+1].Source.Latitude+'</td><td> <button type="button" onclick=createWalkRequest('+eventID +','+ eventID2+');>Invite</button></td></tr>');
+					$("#row12").append('<tr i align=center><td  class=user-name >'+uname+'</td><td>'+source_lat+'</td><td> <button type="button" onclick=createWalkRequest('+eventID +','+ eventID2+');>Invite</button></td></tr>');
 				});
 			}
 		});
