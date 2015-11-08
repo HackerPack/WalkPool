@@ -16,6 +16,7 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
 		<script src="js/jquery.stickyheader.js"></script	>
+		<script src="js/user.js"></script>
 
 	</head>
 	<body>
@@ -27,7 +28,7 @@
 			
 			<div class="component">
 				
-				<p >This is a basic usage example. Scroll down to see the sticky table header in action. And of course, multiple instances are supported. Tables are pre-populated with random user data retrieved from the <a href="http://randomuser.me/" title="Random User Generator">Random User Generator</a>.</p>
+				
 				<div class="sticky-wrap"><div class="sticky-wrap">
 				
 					<table class="sticky-enabled" style="margin: 0px; width: 100%;">
@@ -37,7 +38,7 @@
 						</tr>
 					</thead>
 					<tbody id="row">
-						<tr i align="center"><td  class="user-name" >gary coleman</td></tr>
+						
 					</tbody>
 				</table><table class="sticky-thead" style="width: 787px; opacity: 0; top: 0px;"><thead>
 						<tr>
@@ -94,6 +95,7 @@ var array = [{
 "Recurring": 0
 }];
 
+array = getRequest();
 console.log(array.length);
 for(var i =0;i<array.length;i++)
 {
