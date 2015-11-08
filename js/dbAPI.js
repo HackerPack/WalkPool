@@ -114,9 +114,9 @@ function getAllEvents() {
 			var eventID = eventSnap.key();
 			ref.child("Users").orderByKey().equalTo(eventSnap.val().UID).once("value",function(userDataSnap){
 				 var userFName = userDataSnap.FirstName;
-		alert(userFName);
-		alert(eventID);
-		
+		console.log(userFName);
+		console.log(eventID);
+
 				 allEvents.push({
 					 	 "EventID" : "$eventID",
 						 "FirstName" : "$userFName",
