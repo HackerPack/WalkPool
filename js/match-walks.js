@@ -61,15 +61,18 @@ function isNear(ASrc,ADest,BSrc,BDest) {
       console.log(results[0][0]);
       console.log(results[1][1]);*/
       var x = google.maps.geometry.spherical.computeDistanceBetween(Src1,Src2);
-      if((x = google.maps.geometry.spherical.computeDistanceBetween(Src1,Src2))<10000){
+      var y = google.maps.geometry.spherical.computeDistanceBetween(Dest1,Dest2);
+      if(x < 500000000 && y < 500000000)){
       	console.log("DONE!!");
       	console.log(x);
+      	console.log(y);
       	return true;
       }
       //if(results[0][0]<5 && results[1][1]<100)
       	
       else {
       	console.log(x);
+      	console.log(y);
       	return false;
       }
       	
