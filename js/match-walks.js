@@ -60,14 +60,19 @@ function isNear(ASrc,ADest,BSrc,BDest) {
       console.log(Dest2);
       console.log(results[0][0]);
       console.log(results[1][1]);*/
-      if(google.maps.geometry.spherical.computeDistanceBetween(Src1,Src2)<10000){
+      var x = google.maps.geometry.spherical.computeDistanceBetween(Src1,Src2);
+      if((x = google.maps.geometry.spherical.computeDistanceBetween(Src1,Src2))<10000){
       	console.log("DONE!!");
+      	console.log(x);
       	return true;
       }
       //if(results[0][0]<5 && results[1][1]<100)
       	
-      else 
+      else {
       	return false;
+      	console.log(x);
+      }
+      	
     //}
   //});
 }
