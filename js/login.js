@@ -18,7 +18,7 @@ function getLName(authData){
 	return authData.facebook.cachedUserProfile.last_name;
 }
 
-function login(){
+function login(){	
 
 	ref.authWithOAuthPopup("facebook", function(error, authData) {
   		if (error) {
@@ -40,12 +40,10 @@ function logout(){
 function checkSession(){
 	authData = ref.getAuth();
 	console.log(authData);
-	if(authData){
-		window.location.href = "index.html";
-	}
-	else
+	if(authData==null)
 	{
 		alert("hey");
+		login();
 	}
 }
 
