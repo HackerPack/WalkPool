@@ -146,5 +146,5 @@ function findClosestWalks(callback){
 			}
 		}
 	})*/
-	return closeWalks;
+	callback(closeWalks);
 }
