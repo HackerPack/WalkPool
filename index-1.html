@@ -12,6 +12,10 @@
 	<script src="js/jquery-migrate-1.2.1.js"></script>
 	<script src="js/jquery.stellar.js"></script>
 	<script src="js/script.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+	<script src="js/fire_base_constants.js"></script>
+	<script src="js/dbAPI.js"></script>
+	<script src="js/login.js"></script>
 	<!--[if (gt IE 9)|!(IE)]><!-->
 	<script src="js/wow.js"></script>
 	<script>
@@ -85,37 +89,45 @@
 			<table class="sticky-enabled" style="margin: 0px; width: 100%;">
 					<thead>
 						<tr>
-							<th align="center" bgcolor="#31bc86" colspan=4 color="white" >Notifications</th>							
+							<th align="center" bgcolor="#31bc86" colspan=4 color="white" >Invite Friend for Walk</th>							
 						</tr>
 					</thead>
 			<tbody id="row12">
 			</tbody>
-		</table>
-			</div>
-		</div>
-
-	</div>
-	<div class="full-width-container block-2 parallax-block" data-stellar-background-ratio="0.5">
-		<div class="container">
-
+			</table>
 		</div>
 	</div>
+	</section>
+<script type="text/javascript">
+var array = [];
+var array = [{"EventID":"-K2an8oMU2f4eDv3V48a","UID":"facebook:10207308437885698","Source":{"Latitude":36.00672199999999,"Longitude":-78.93727969999998},"Destination":{"Latitude":36.00415410000001,"Longitude":-78.93949309999999},"ArrivingTime":"04/11/2015 06:12:27","Recurring":1},
+{"EventID":"-K2anAFNggIQt_XHSeR_","UID":"facebook:10207308437885698","Source":{"Latitude":36.00672199999999,"Longitude":-78.93727969999998},"Destination":{"Latitude":36.00415410000001,"Longitude":-78.93949309999999},"ArrivingTime":"04/11/2015 06:12:27","Recurring":1}];
+
+//array = getRequest();
+//array =[];
+console.log(array.length);
+if(array.length == 0)
+{
+	 $("#row12").append('<tr i align=center><td  class=user-name >'+'No Matching Routes Found'+'</td></tr>');
+}
+ else {
+	for(var i =0;i<(array.length-1);i+=2)
+		{
+			$("#row12").append('<tr i align=center><td  class=user-name >'+array[i].EventID+'</td><td  class=user-name >'+array[i+1].EventID+'</td><td> <button type="button" onClick=createWalkRequest('+array[i].EventID +','+ array[i+1].EventID+')">Invite</button></td></tr>');
+		}
+	}
+//console.log(rr);
+   /*for (var i = 1; i <=10; i++) {
+   	var str = "<tr i align=center><td  class=user-name >"+i+"</td></tr>";
+   	$("#row").append(str);
+   };*/
+    
+    //alert(pp.name);
+    
+</script>
 	
-</section>
-
 <!--=======footer=================================-->
 <footer id="footer">
-	<div class="container">
-		<div class="row">
-			<div class="grid_12 copyright">
-				<h2><span>Follow Us</span></h2>
-				<a href="#" class="btn bd-ra"><span class="fa fa-facebook"></span></a>
-				<a href="#" class="btn bd-ra"><span class="fa fa-tumblr"></span></a>
-				<a href="#" class="btn bd-ra"><span class="fa fa-google-plus"></span></a>
-				<pre>© <span id="copyright-year"></span> |  Privacy Policy</pre>
-			</div>
-		</div>
-	</div>
 	<div class="footer_bottom"><a href="http://www.templatemonster.com/" rel="nofollow"><img src="images/footer-logo.png" alt="logo"></a></div>
 </footer>
 <script>
@@ -129,43 +141,6 @@
 				});
 			}
 		});	
-	var array = [{
- "FirstName" : "Jack",
- "Source" : {
-     "Latitude" : "35",
-     "Longitude" : "35"
- },
- "Destination" : {
-     "Latitude" : "40",
-     "Longitude" : "40"
- },
- "ArrivingTime" : "2011-04-11T11:51:00",
-"Recurring": 0,
-"RequestID": 123
-},
-{
- "FirstName" : "ripper",
- "Source" : {
-     "Latitude" : "19",
-     "Longitude" : "19"
- },
- "Destination" : {
-     "Latitude" : "90",
-     "Longitude" : "90"
- },
- "ArrivingTime" : "2011-04-11T11:51:00",
-"Recurring": 0
-}];
-	console.log(array.length);
-	for(var i=0;i<array.length;i++)
-	{
-		console.log(array[i]);
- //var pp= JSON.parse(array[i]);
-	$("#row12").append('<tr i align=center><td  class=user-name >'+array[i].FirstName+'invited you for a walk pool on '+array[i].ArrivingTime+'</td><td><button type="button" class="btn btn-sm btn-primary">InviteFriends</button></td></tr>');
-
-//console.log(pp.FirstName);
-
-	}
 </script>
 </body>
 </html>
