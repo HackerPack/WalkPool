@@ -1,4 +1,3 @@
-var ref = new Firebase("https://brilliant-fire-4087.firebaseio.com/");
 function search_user(authData)
 {
 	ref.child("Users").orderByKey().equalTo(authData.uid).once("value", function(snapshot){
