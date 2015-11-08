@@ -90,7 +90,7 @@ function getAcceptance() {
 				inviteeList.forEach(function(invitee){
 					 if (invitee.val() == "true") {
 						 ref.child("Users").orderByKey().equalTo(invitee.key()).once("value",function(userDataSnap){
-							 var userFName = userDataSnap.FirstName;
+							 var userFName = userDataSnap.val().FirstName;
 							 acceptanceData.push({
 									 "FirstName" : "$userFName",
 									 "Source": {"Latitude": "$eventSnap.Source.Latitude", "Longitude": "$eventSnap.Source.Longitude"},
@@ -113,7 +113,7 @@ function getAllEvents() {
 		eventList.forEach(function(eventSnap) {
 			var eventID = eventSnap.key();
 			ref.child("Users").orderByKey().equalTo(eventSnap.val().UID).once("value",function(userDataSnap){
-				 var userFName = userDataSnap.FirstName;
+				 var userFName = userDataSnap.val().FirstName;
 		console.log(userFName);
 		console.log(eventID);
 
