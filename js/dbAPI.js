@@ -61,14 +61,13 @@ function getRequest(callback) {
 		requestList.forEach(function(request) {
 			ref.child("WalkEvent").orderByKey().equalTo(request.val().WalkEventID).once("value",function(eventSnap){
 				var eventVal = eventSnap.val();
+				var request = request.val();
 				ref.child("Users").child(eventSnap.UID).once("value", function(userSnap){
 					requestData.push({
-							RequestID : request.key(),
-							FirstName : userSnap.val().FirstName,
-							Source: {Latitude: eventVal.Source.Latitude, Longitude: eventVal.Source.Longitude},
-							Destination: {Latitude: eventVal.Destination.Latitude, Longitude: eventVal.Destination.Longitude},
-							ArrivingTime: eventVal.ArrivingTime,
-							Recurring: eventVal.Recurring});
+							Accepted : request.Accepted,
+							InviteeWalkEventID : request.InviteeWalkEventID,
+							UID: request.UID,
+							WalkEventID: request.WalkEventID});
 				});
 			});
 		});
