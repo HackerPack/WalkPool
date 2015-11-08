@@ -48,7 +48,7 @@ function updateAcceptance(requestID){						//Request ID accepted by the user
 	
 	inviteeUID = ref.getAuth().uid;
 	
-	ref.child("WalkRequest/$requestID/Invitee").update({
+	ref.child("WalkRequest").child(requestID).child("Invitee").update({
 		"$inviteeUID" : "true"
 	});
 }
@@ -57,12 +57,15 @@ function getRequest(callback) {
 	var requestData = [];
 	
 	ref.child("WalkRequest").orderByChild("UID").equalTo(ref.getAuth().uid).once("value", function(requestList) {
-		
+		console.log("Inside RequestList");
 		requestList.forEach(function(request) {
+			var request = request.val();
+			console.log("Inside a request");
 			ref.child("WalkEvent").orderByKey().equalTo(request.val().WalkEventID).once("value",function(eventSnap){
+				console.log("Inside the event");
 				var eventVal = eventSnap.val();
-				var request = request.val();
 				ref.child("Users").child(eventSnap.UID).once("value", function(userSnap){
+					console.log("Inside the user details");
 					requestData.push({
 							Accepted : request.Accepted,
 							InviteeWalkEventID : request.InviteeWalkEventID,
