@@ -118,7 +118,7 @@ function addToDatabase()
     value = 1;
   }
   alert(getFName(authData));
-  /*var json='{
+  var json='{
  "FirstName" : "'+getFName()+'",
  "Source" : {
      "Latitude" : "'+startLat+'",
@@ -130,7 +130,7 @@ function addToDatabase()
  },
  "ArrivingTime" : "'+inputDateTime'",
 "Recurring": '+value+'
-}';*/
+}';
 alert(json);
   alert(inputDateTime + startLat + " " + startLong +" " + endLat +" " + endLong+ " " +value );
 
