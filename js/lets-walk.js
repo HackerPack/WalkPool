@@ -117,9 +117,10 @@ function addToDatabase()
   {
     value = 1;
   }
-  alert(getFName(authData));
+  alert(authName);
+  var authName= getFName(authData);
   var jsonObj="{
- \"FirstName\" : \""+getFName(authData)+"\",
+ \"FirstName\" : \""+authName+"\",
  \"Source\" : {";
  /*
      "Latitude" : "'+startLat+'",
