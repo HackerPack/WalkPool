@@ -11,10 +11,10 @@ function search_user(authData)
 function createWalkEvent(eventData){						//Event details from front end
 	ref.child("WalkEvent").push({
 		"UID" : ref.getAuth().uid,
-		"Source/Latitude" : eventData.Source.Latitude,
-		"Source/Longitude" : eventData.Source.Longitude,
-		"Destination/Latitude" : eventData.Destination.Latitude,
-		"Destination/Longitude" : eventData.Destination.Longitude,
+		"SourceLatitude" : eventData.Source.Latitude,
+		"SourceLongitude" : eventData.Source.Longitude,
+		"DestinationLatitude" : eventData.Destination.Latitude,
+		"DestinationLongitude" : eventData.Destination.Longitude,
 		"ArrivingTime" : eventData.ArrivingTime,
 		"Recurring" : eventData.Recurring
 	});
@@ -62,15 +62,15 @@ function getRequest() {
 				var requestID = request.key();
 				ref.child("Users").orderByKey().equalTo(eventSnap.UID).once("value", function(userSnap){
 					FName = userSnap.val().FirstName;
-				})
+				});
 				
-				requestData.push(
+				requestData.push({
 						"RequestID" : "$requestID",
 						"FirstName" : "$FName",
 						"Source": {"Latitude": "$eventSnap.Source.Latitude", "Longitude": "$eventSnap.Source.Longitude"},
 						"Destination": {"Latitude": "$eventSnap.Destination.Latitude", "Longitude": "$eventSnap.Destination.Longitude"},
 						"ArrivingTime": "$eventSnap.ArrivingTime",
-						"Recurring": "$eventSnap.Recurring");
+						"Recurring": "$eventSnap.Recurring"});
 			});
 		});
 	});
@@ -89,15 +89,14 @@ function getAcceptance() {
 					 if (invitee.val() == "true") {
 						 ref.child("Users").orderByKey().equalTo(invitee.key()).once("value",function(userDataSnap){
 							 var userFName = userDataSnap.FirstName;
-							 acceptanceData.push(
+							 acceptanceData.push({
 									 "FirstName" : "userFName",
 									 "Source": {"Latitude": "$eventSnap.Source.Latitude", "Longitude": "$eventSnap.Source.Longitude"},
 									 "Destination": {"Latitude": "$eventSnap.Destination.Latitude", "Longitude": "$eventSnap.Destination.Longitude"},
 									 "ArrivingTime": "$eventSnap.ArrivingTime",
-									 "Recurring": "$eventSnap.Recurring");
+									 "Recurring": "$eventSnap.Recurring"});
 						});
 					 }
-					});
 				});
 			});
 		});
@@ -105,6 +104,8 @@ function getAcceptance() {
 }
 
 function getAllEvents() {
+	var events = ref.child("WalkEvent");
+	return events;
 	
 }
 

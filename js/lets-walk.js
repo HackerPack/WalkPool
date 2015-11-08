@@ -110,14 +110,15 @@ function dateTime() {
 }
 function addToDatabase()
 {
-  var inputDateTime = document.getElementById('datetimepicker1');
+  var inputDateTime = document.getElementById('datetimepicker2');
   var val = $('input[name="recurring"]:checked').val();
   var value = null;
   if(val=="daily")
   {
     value = 1;
   }
-  var authName= getFName(authData);
+  var authName= "da";
+  //getFName(authData);
 
   alert(authName);
   var jsonObj={
@@ -130,10 +131,12 @@ function addToDatabase()
      "Latitude" : endLat,
      "Longitude" : endLong,
  },
- "ArrivingTime" : inputDateTime,
+ "ArrivingTime" : inputDateTime.value,
 "Recurring": value
 };
-var jsonObj = JSON.stringify(jsonObj);
+createWalkEvent(jsonObj);
+var jsonObj=getAllEvents();
+jsonObj = jsonObj.stringify();
 alert(jsonObj);
 
 }
