@@ -118,8 +118,10 @@ function addToDatabase()
     value = 1;
   }
   alert(getFName(authData));
-  var json='{
- "FirstName" : "'+getFName()+'",
+  var abc='dasda';
+  alert(abc);
+  var jsonObj='{
+ "FirstName" : "'+getFName(authData)+'",
  "Source" : {
      "Latitude" : "'+startLat+'",
      "Longitude" : "'+startLong+'"
@@ -131,7 +133,7 @@ function addToDatabase()
  "ArrivingTime" : "'+inputDateTime'",
 "Recurring": '+value+'
 }';
-alert(json);
+alert(jsonObj);
   alert(inputDateTime + startLat + " " + startLong +" " + endLat +" " + endLong+ " " +value );
 
 }
