@@ -11,10 +11,12 @@ function search_user(authData)
 function createWalkEvent(eventData){						//Event details from front end
 	ref.child("WalkEvent").push({
 		"UID" : ref.getAuth().uid,
-		"SourceLatitude" : eventData.Source.Latitude,
-		"SourceLongitude" : eventData.Source.Longitude,
-		"DestinationLatitude" : eventData.Destination.Latitude,
-		"DestinationLongitude" : eventData.Destination.Longitude,
+		"Source" : {
+			"Latitude" : eventData.Source.Latitude,
+			"Longitude" : eventData.Source.Longitude},
+		"Destination" : {
+			"Latitude" : eventData.Destination.Latitude,
+			"Longitude" : eventData.Destination.Longitude},
 		"ArrivingTime" : eventData.ArrivingTime,
 		"Recurring" : eventData.Recurring
 	});
