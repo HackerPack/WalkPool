@@ -3,11 +3,10 @@ var myFirstName = authData.uid;
 function isNear(ASrc,ADest,BSrc,BDest) {
   var bounds = new google.maps.LatLngBounds;
   //var markersArray = [];
-
-  var Src1 = {lat: ASrc.Latitude, lng: ASrc.Longitude};
-  var Dest1 = {lat: ADest.Latitude, lng: ADest.Longitude};
-  var Src2 = {lat: BSrc.Latitude, lng: BSrc.Longitude};
-  var Dest2 = {lat: BDest.Latitude, lng: BDest.Longitude};
+  var Src1 = new google.maps.LatLng(ASrc.Latitude, ASrc.Longitude);
+  var Dest1 = new google.maps.LatLng(ADest.Latitude, ADest.Latitude);
+  var Src2 = new google.maps.LatLng(BSrc.Latitude, BSrc.Latitude);
+  var Dest2 = new google.maps.LatLng(BDest.Latitude, BDest.Latitude);
   //var origin2 = 'Greenwich, England';
   //var destinationA = 'Stockholm, Sweden';
   //var destinationB = {lat: 50.087, lng: 14.421};
