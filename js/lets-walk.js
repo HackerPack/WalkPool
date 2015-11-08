@@ -1,10 +1,11 @@
-function initMap() {
-  var origin_place_id = null;
-  var destination_place_id = null;
-  var startLat = null;
+
+var startLat = null;
   var startLong = null;
   var endLat = null;
   var endLong = null;
+function initMap() {
+  var origin_place_id = null;
+  var destination_place_id = null;
   var travel_mode = google.maps.TravelMode.WALKING;
   var map = new google.maps.Map(document.getElementById('map'), {
     mapTypeControl: false,
@@ -105,12 +106,32 @@ function initMap() {
   }
 }
 function dateTime() {
-  alert("Hey");
-
   new DatePicker('.demo_time', { pickerClass: 'datepicker_vista', timePicker: true, format: 'd-m-Y @ H:i' });
 }
 function addToDatabase()
 {
-  alert("Jey");
+  var inputDateTime = document.getElementById('datetimepicker1');
+  var val = $('input[name="recurring"]:checked').val();
+  var value = null;
+  if(val=="daily")
+  {
+    value = 1;
+  }
+  alert(getFName());
+  var json='{
+ "FirstName" : "'+getFName()+'",
+ "Source" : {
+     "Latitude" : "'+startLat+'",
+     "Longitude" : "'+startLong+'"
+ },
+ "Destination" : {
+     "Latitude" : "'+endLat+'",
+     "Longitude" : "'+endLong+'"
+ },
+ "ArrivingTime" : "'+inputDateTime'",
+"Recurring": '+value+'
+}';
+alert(json);
+  alert(inputDateTime + startLat + " " + startLong +" " + endLat +" " + endLong+ " " +value );
 
 }
