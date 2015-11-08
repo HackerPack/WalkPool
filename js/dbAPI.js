@@ -72,7 +72,7 @@ function getRequest(callback) {
 				});
 			});
 		});
-		callback(acceptanceData);
+		callback(requestData);
 	});
 }
 
