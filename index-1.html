@@ -102,9 +102,19 @@
 	</div>
 	</section>
 <script type="text/javascript">
-/*var array = [{"EventID":"0","UID":"facebook:10207308437885698","Source":{"Latitude":36.00672199999999,"Longitude":-78.93727969999998},"Destination":{"Latitude":36.00415410000001,"Longitude":-78.93949309999999},"ArrivingTime":"04/11/2015 06:12:27","Recurring":1},
+var array = [{"EventID":"0","UID":"facebook:10207308437885698","Source":{"Latitude":36.00672199999999,"Longitude":-78.93727969999998},"Destination":{"Latitude":36.00415410000001,"Longitude":-78.93949309999999},"ArrivingTime":"04/11/2015 06:12:27","Recurring":1},
 {"EventID":"1","UID":"facebook:10207308437885698","Source":{"Latitude":36.00672199999999,"Longitude":-78.93727969999998},"Destination":{"Latitude":36.00415410000001,"Longitude":-78.93949309999999},"ArrivingTime":"04/11/2015 06:12:27","Recurring":1}];
-*/
+console.log(array.length);
+				if(array.length == 0)
+				{
+					 $("#row12").append('<tr i align=center><td  class=user-name >'+'No Matching Routes Found'+'</td></tr>');
+				}
+				else {
+				for(var i =0;i<(array.length-1);i+=2)
+				{
+						$("#row12").append('<tr i align=center><td  class=user-name >'+array[i].EventID+'</td><td  class=user-name >'+array[i+1].EventID+'</td><td> <button type="button" onclick=createWalkRequest('+array[i].EventID +','+ array[i+1].EventID+');>Invite</button></td></tr>');
+				}
+
 //array = getRequest();
 //array =[];
 
@@ -124,7 +134,7 @@
 </footer>
 <script>
 	$(document).ready(function() { 
-			findClosestWalks(function(array){
+			/*findClosestWalks(function(array){
 
 				console.log(array.length);
 				if(array.length == 0)
@@ -137,7 +147,7 @@
 						$("#row12").append('<tr i align=center><td  class=user-name >'+array[i].EventID+'</td><td  class=user-name >'+array[i+1].EventID+'</td><td> <button type="button" onclick=createWalkRequest('+array[i].EventID +','+ array[i+1].EventID+');>Invite</button></td></tr>');
 				}
 			}
-			});
+			});*/
 			if ($('html').hasClass('desktop')) {
 				$.stellar({
 					horizontalScrolling: false,

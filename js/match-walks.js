@@ -126,7 +126,7 @@ function findClosestWalks(callback){
 			}
 		}
 	}
-	console.log(closeWalks);
+	console.log("closeWalks" + closeWalks);
 	/*mywalks.forEach( function (value){
 		for(key in walk_res){
 			if(key.FirstName===myFirstName){
