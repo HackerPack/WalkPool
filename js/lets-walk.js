@@ -55,7 +55,6 @@ function initMap() {
     var place = origin_autocomplete.getPlace();
     startLat = place.geometry.location.lat();
     startLong = place.geometry.location.lng();
-    alert(place.geometry.location.lat());
     if (!place.geometry) {
       window.alert("Autocomplete's returned place contains no geometry");
       return;
@@ -101,7 +100,6 @@ function initMap() {
       } else {
         window.alert('Directions request failed due to ' + status);
       }
-      alert(startLat + " " + startLong +" " + endLat +"" + endLong);
     });
   }
 }
@@ -120,7 +118,6 @@ function addToDatabase()
   var authName= "da";
   //getFName(authData);
 
-  alert(authName);
   var jsonObj={
  "FirstName" : authName,
  "Source" : {
@@ -135,8 +132,5 @@ function addToDatabase()
 "Recurring": value
 };
 createWalkEvent(jsonObj);
-var jsonObj=getAllEvents();
-jsonObj = jsonObj.stringify();
-alert(jsonObj);
 
 }
