@@ -134,6 +134,7 @@ function addToDatabase()
  "ArrivingTime" : inputDateTime,
 "Recurring": value
 };
+createWalkEvent(jsonObj);
 var jsonObj = JSON.stringify(jsonObj);
 alert(jsonObj);
 
