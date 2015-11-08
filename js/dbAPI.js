@@ -90,7 +90,7 @@ function getAcceptance() {
 						 ref.child("Users").orderByKey().equalTo(invitee.key()).once("value",function(userDataSnap){
 							 var userFName = userDataSnap.FirstName;
 							 acceptanceData.push({
-									 "FirstName" : "userFName",
+									 "FirstName" : "$userFName",
 									 "Source": {"Latitude": "$eventSnap.Source.Latitude", "Longitude": "$eventSnap.Source.Longitude"},
 									 "Destination": {"Latitude": "$eventSnap.Destination.Latitude", "Longitude": "$eventSnap.Destination.Longitude"},
 									 "ArrivingTime": "$eventSnap.ArrivingTime",
@@ -104,9 +104,22 @@ function getAcceptance() {
 }
 
 function getAllEvents() {
-	var events = ref.child("WalkEvent");
-	return events;
-	
+	var allEvents[];
+	ref.child("WalkEvent").once("value", function(eventList){
+		eventList.forEach(function(eventSnap) {
+			var eventID = eventSnap.key();
+			ref.child("Users").orderByKey().equalTo(eventSnap.val().UID).once("value",function(userDataSnap){
+				 var userFName = userDataSnap.FirstName;
+				 acceptanceData.push({
+					 	 "EventID" : "$eventID",
+						 "FirstName" : "$userFName",
+						 "Source": {"Latitude": "$eventSnap.Source.Latitude", "Longitude": "$eventSnap.Source.Longitude"},
+						 "Destination": {"Latitude": "$eventSnap.Destination.Latitude", "Longitude": "$eventSnap.Destination.Longitude"},
+						 "ArrivingTime": "$eventSnap.ArrivingTime",
+						 "Recurring": "$eventSnap.Recurring"});
+				});
+		});
+	});
 }
 
 function read_user(){
