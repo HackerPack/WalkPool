@@ -1,0 +1,116 @@
+<html lang="en" class="no-js"><head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Sticky Table Headers Revisited | Demo 1</title>
+		<meta name="description" content="Sticky Table Headers Revisited: Creating functional and flexible sticky table headers">
+		<meta name="keywords" content="Sticky Table Headers Revisited">
+		<meta name="author" content="Codrops">
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css">
+		<link rel="stylesheet" type="text/css" href="css/demo.css">
+		<link rel="stylesheet" type="text/css" href="css/component.css">
+		<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+		<script src="js/jquery.stickyheader.js"></script	>
+
+	</head>
+	<body>
+		
+		
+		<div class="container">
+			<!-- Top Navigation -->
+			
+			
+			<div class="component">
+				
+				<p >This is a basic usage example. Scroll down to see the sticky table header in action. And of course, multiple instances are supported. Tables are pre-populated with random user data retrieved from the <a href="http://randomuser.me/" title="Random User Generator">Random User Generator</a>.</p>
+				<div class="sticky-wrap"><div class="sticky-wrap">
+				
+					<table class="sticky-enabled" style="margin: 0px; width: 100%;">
+					<thead>
+						<tr>
+							<th align="center" bgcolor="#31bc86" colspan=4 color="white" >Notifications</th>							
+						</tr>
+					</thead>
+					<tbody id="row">
+						<tr i align="center"><td  class="user-name" >gary coleman</td></tr>
+					</tbody>
+				</table><table class="sticky-thead" style="width: 787px; opacity: 0; top: 0px;"><thead>
+						<tr>
+							<th style="width: 166px;">Name</th>
+							<th style="width: 288px;">Email</th>
+							<th style="width: 166px;">Phone</th>
+							<th style="width: 167px;">Mobile</th>
+						</tr>
+					</thead></table></div><div class="sticky-wrap"><table class="sticky-thead sticky-enabled" style="width: 100%; opacity: 0; top: 0px; margin: 0px;"><thead>
+						<tr>
+							<th style="width: 166px;">Name</th>
+							<th style="width: 288px;">Email</th>
+							<th style="width: 166px;">Phone</th>
+							<th style="width: 167px;">Mobile</th>
+						</tr>
+					</thead></table><table class="sticky-thead" style="width: 787px; opacity: 0; top: 0px;"><thead>
+						<tr>
+							<th style="width: 166px;">Name</th>
+							<th style="width: 288px;">Email</th>
+							<th style="width: 166px;">Phone</th>
+							<th style="width: 167px;">Mobile</th>
+						</tr>
+					</thead></table></div></div>				
+			</div>
+			
+		</div><!-- /container -->
+		<script type="text/javascript">
+  // var j = ;
+var array = [{
+ "FirstName" : "Jack",
+ "Source" : {
+     "Latitude" : "35",
+     "Longitude" : "35"
+ },
+ "Destination" : {
+     "Latitude" : "40",
+     "Longitude" : "40"
+ },
+ "ArrivingTime" : "2011-04-11T11:51:00",
+"Recurring": 0,
+"RequestID": 123
+},
+{
+ "FirstName" : "ripper",
+ "Source" : {
+     "Latitude" : "19",
+     "Longitude" : "19"
+ },
+ "Destination" : {
+     "Latitude" : "90",
+     "Longitude" : "90"
+ },
+ "ArrivingTime" : "2011-04-11T11:51:00",
+"Recurring": 0
+}];
+
+console.log(array.length);
+for(var i =0;i<array.length;i++)
+{
+ //var pp= JSON.parse(array[i]);
+$("#row").append('<tr i align=center><td  class=user-name >'+array[i].FirstName+'invited you for a walk pool on '+array[i].ArrivingTime+'</td></tr>');
+
+//console.log(pp.FirstName);
+
+}
+//console.log(rr);
+   /*for (var i = 1; i <=10; i++) {
+   	var str = "<tr i align=center><td  class=user-name >"+i+"</td></tr>";
+   	$("#row").append(str);
+   };*/
+    
+    //alert(pp.name);
+    
+</script>
+	
+</body></html>
