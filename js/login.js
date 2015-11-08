@@ -38,12 +38,14 @@ function logout(){
 
 function checkSession(){
 	authData = ref.getAuth();
+	alert(authData);
 	console.log(authData);
 	if(authData){
 		window.location.href = "index.html";
 	}
 	else
 	{
+		alert("hey");
 		login();
 	}
 }
