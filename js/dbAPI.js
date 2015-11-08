@@ -22,11 +22,12 @@ function createWalkEvent(eventData){						//Event details from front end
 	});
 }
 
-function createWalkRequest(myEventId, inviteeEventID){		//Requester event ID, Invitee Event ID
+function createWalkRequest(myEventId, inviteeEventID){	
+		//Requester event ID, Invitee Event ID
 	var inviteeUID;
 	
 	ref.child("WalkEvent").orderByKey().equalTo(inviteeEventID).once("value", function(snapshot){
-		inviteeUID = snapshot.val().UID
+		inviteeUID = snapshot.val().UID;
 	});
 	
 	/*ref.child("WalkEvent/$myEventId/Invitee").update({
