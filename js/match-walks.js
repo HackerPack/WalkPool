@@ -62,7 +62,7 @@ function isNear(ASrc,ADest,BSrc,BDest) {
       console.log(results[1][1]);*/
       var x = google.maps.geometry.spherical.computeDistanceBetween(Src1,Src2);
       var y = google.maps.geometry.spherical.computeDistanceBetween(Dest1,Dest2);
-      if(x < 500000000 && y < 500000000)){
+      if(x < 500000000 && y < 500000000){
       	console.log("DONE!!");
       	console.log(x);
       	console.log(y);
