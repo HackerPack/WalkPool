@@ -1,0 +1,37 @@
+<html>
+<body>
+	<div id="abc">
+
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> 
+	<script src="js/match-walks.js"></script>
+	<script src="js/users.js" ></script>
+	<script>
+		/*var walks = [
+			{"FirstName" : "shivani",
+    			"Source" : {
+        "Latitude" : "35",
+        "Longitude" : "35"
+    },
+    "Destination" : {
+        "Latitude" : "40",
+        "Longitude" : "40"
+    },
+    "ArrivingTime" : "2:45PM",
+    "Date" : "12/11/2015T23:56:07"},
+    {"FirstName" : "Jack",
+    "Source" : {
+        "Latitude" : "35",
+        "Longitude" : "35"
+    },
+    "Destination" : {
+        "Latitude" : "40",
+        "Longitude" : "40"
+    },
+    "ArrivingTime" : "2:45PM",
+    "Date" : "12/11/2015 23:56:07"}];*/
+    var walks = getAllEvents();
+    findClosestWalks(walks);
+	</script>
+</body>
+</html>
