@@ -118,9 +118,10 @@ function addToDatabase()
     value = 1;
   }
   alert(getFName(authData));
-  /*var jsonObj='{
- "FirstName" : "'+getFName(authData)+'",
- "Source" : {
+  var jsonObj="{
+ \"FirstName\" : \""+getFName(authData)+"\",
+ \"Source\" : {";
+ /*
      "Latitude" : "'+startLat+'",
      "Longitude" : "'+startLong+'"
  },
@@ -130,8 +131,8 @@ function addToDatabase()
  },
  "ArrivingTime" : "'+inputDateTime'",
 "Recurring": '+value+'
-}';
-alert(jsonObj);*/
+}';*/
+alert(jsonObj);
   alert(inputDateTime + startLat + " " + startLong +" " + endLat +" " + endLong+ " " +value );
 
 }
