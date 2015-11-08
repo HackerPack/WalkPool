@@ -42,7 +42,6 @@ function checkSession(){
 	console.log(authData);
 	if(authData==null)
 	{
-		alert("hey");
 		login();
 	}
 }
