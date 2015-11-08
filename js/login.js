@@ -4,8 +4,8 @@ ref.onAuth(function(authData) {
     // save the user's profile into the database so we can list users,
     // use them in Security and Firebase Rules, and show profiles
     ref.child("Users").child(authData.uid).set({
-      fname: getFName(authData),
-      lname: getLName(authData)
+      FirstName: getFName(authData),
+      LastName: getLName(authData)
     });
   }
 });

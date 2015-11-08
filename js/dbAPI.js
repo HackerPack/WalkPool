@@ -90,7 +90,7 @@ function getAcceptance() {
 				inviteeList.forEach(function(invitee){
 					 if (invitee.val() == "true") {
 						 ref.child("Users").orderByKey().equalTo(invitee.key()).once("value",function(userDataSnap){
-							 var userFName = userDataSnap.FirstName;
+							 var userFName = userDataSnap.val().FirstName;
 							 acceptanceData.push({
 									 "FirstName" : "$userFName",
 									 "Source": {"Latitude": "$eventSnap.Source.Latitude", "Longitude": "$eventSnap.Source.Longitude"},
@@ -109,10 +109,14 @@ function getAcceptance() {
 function getAllEvents() {
 	var allEvents = [];
 	ref.child("WalkEvent").once("value", function(eventList){
+		alert("Inside eventlist");
 		eventList.forEach(function(eventSnap) {
 			var eventID = eventSnap.key();
-			ref.child("Users").orderByKey().equalTo(eventSnap.val().UID).once("value",function(userDataSnap){
-				 var userFName = userDataSnap.FirstName;
+			ref.child("Users/$eventSnap.val().UID").once("value",function(userDataSnap){
+				 var userFName = userDataSnap.val().FirstName;
+		console.log("FNAME"+userFName);
+		console.log(eventID);
+
 				 allEvents.push({
 					 	 "EventID" : "$eventID",
 						 "FirstName" : "$userFName",
@@ -123,6 +127,7 @@ function getAllEvents() {
 				});
 		});
 	});
+	console.log(allEvents[0]);
 	return allEvents;
 }
 
