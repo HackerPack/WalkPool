@@ -54,27 +54,29 @@ function updateAcceptance(requestID){						//Request ID accepted by the user
 }
 
 function getRequest(callback) {
-	var requestData = [];
+var requestData = [];
 	
 	ref.child("WalkRequest").orderByChild("UID").equalTo(ref.getAuth().uid).once("value", function(requestList) {
-		console.log("Inside RequestList");
+		
 		requestList.forEach(function(request) {
-			var request = request.val();
-			console.log("Inside a request");
+			var requestKey = request.key();
+			console.log("Inside request");
 			ref.child("WalkEvent").orderByKey().equalTo(request.val().WalkEventID).once("value",function(eventSnap){
-				console.log("Inside the event");
+				console.log("Inside EventSnap");
 				var eventVal = eventSnap.val();
 				ref.child("Users").child(eventSnap.UID).once("value", function(userSnap){
-					console.log("Inside the user details");
+					console.log("Inside UserSnap");
 					requestData.push({
-							Accepted : request.Accepted,
-							InviteeWalkEventID : request.InviteeWalkEventID,
-							UID: request.UID,
-							WalkEventID: request.WalkEventID});
+							RequestID : requestKey,
+							FirstName : userSnap.val().FirstName,
+							Source: {Latitude: eventVal.Source.Latitude, Longitude: eventVal.Source.Longitude},
+							Destination: {Latitude: eventVal.Destination.Latitude, Longitude: eventVal.Destination.Longitude},
+							ArrivingTime: eventVal.ArrivingTime,
+							Recurring: eventVal.Recurring});
 				});
 			});
 		});
-		callback(requestData);
+		callback(acceptanceData);
 	});
 }
 
