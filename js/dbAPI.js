@@ -135,3 +135,10 @@ function read_user(){
 		return snapshot.val();
 	});
 }
+
+function get_name_from_uid(uid){
+	var user = ref.child("Users/"+uid+"/FirstName");
+	user.once("value",function(data){
+		return data.val();
+	});
+}
