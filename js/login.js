@@ -42,6 +42,10 @@ function checkSession(){
 	if(authData){
 		window.location.href = "index.html";
 	}
+	else
+	{
+		login();
+	}
 }
 
 function checkSessionLogin(){
