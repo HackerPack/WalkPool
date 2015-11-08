@@ -57,7 +57,7 @@ function getRequest(callback) {
 var requestData = [];
 	
 	ref.child("WalkRequest").orderByChild("UID").equalTo(ref.getAuth().uid).once("value", function(requestList) {
-		
+		console.log("Inside requestList");
 		requestList.forEach(function(request) {
 			var requestKey = request.key();
 			console.log("Inside request");
