@@ -15,9 +15,12 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQf4f8pMlnmHj__IkX_fKLcjRL5VtGMTE&signed_in=true&libraries=geometry&sensor=false"
         async defer></script>
 	<script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
-	<script src="js/fire_base_constants.js"></script>
-	<script src="js/dbAPI.js"></script>
-	<script src="js/login.js"></script>
+<script src = "js/fire_base_constants.js"></script>
+<script src = "js/dbAPI.js"></script>
+<script src="js/login.js"></script>
+<script>
+	checkSession();
+</script>
 	<script src="js/match-walks.js"></script>
 	<!--[if (gt IE 9)|!(IE)]><!-->
 	<script src="js/wow.js"></script>
@@ -129,8 +132,13 @@ if(array.length == 0)
 				var uid = array[i+1].UID;
 				var eventID = array[i].EventID;
 				var eventID2 = array[i+1].EventID;
+				var source_lat = array[i+1].Source.Latitude;
+				var source_long = array[i+1].Source.Longitude;
+				var dest_lat = array[i+1].Destination.Latitude;
+				var dest_long = array[i+1].Destination.Longitude;
+				var ArrivalTime = array[i+1].ArrivingTime;
 				get_name_from_uid(uid, function(uname){
-					$("#row12").append('<tr i align=center><td  class=user-name >'+uname+'</td><<td> <button type="button" onclick=createWalkRequest('+eventID +','+ eventID2+');>Invite</button></td></tr>');
+					$("#row12").append('<tr i align=center><td  class=user-name >'+uname+'</td><td>'+source_lat+'</td><td>'+source_long+'</td><td>'+dest_lat+'</td><td>'+dest_long+'</td><td>'+ArrivalTime+'</td><td> <button type="button" onclick=createWalkRequest('+eventID +','+ eventID2+');>Invite</button></td></tr>');
 				});
 			}
 		});
