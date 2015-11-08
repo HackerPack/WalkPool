@@ -122,7 +122,7 @@ function getAllEvents() {
 						 "Recurring": "$eventSnap.Recurring"});
 				});
 	});
-	console.log(allEvents);
+	console.log(allEvents[0]);
 	return allEvents;
 }
 
