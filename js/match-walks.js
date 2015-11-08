@@ -121,6 +121,7 @@ function findClosestWalks(callback){
 				if(//todayDate === objectDate &to& 
 					isNear(mywalks[i].Source,mywalks[i].Destination,
 													  walk_res[j].Source,walk_res[j].Destination)){
+					closeWalks.push(mywalks[i]);
 					closeWalks.push(walk_res[j]);
 					//$("#abc").html("got my close walk");
 				}

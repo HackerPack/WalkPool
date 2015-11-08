@@ -108,8 +108,20 @@
 			
 		</div><!-- /container -->
 		<script type="text/javascript">
+		getRequest(function(array){
+
+			console.log(array.length);
+			for(var i =0;i<array.length;i++)
+			{
+ //var pp= JSON.parse(array[i]);
+				$("#row12").append('<tr i align=center><td  class=user-name >'+array[i].UID+'invited you for a walk pool on '+array[i].WalkEventID+'</td><td><button type="button" onclick="accept()">Accept</button></td></tr>');
+
+//console.log(pp.FirstName);
+
+			}
+		});
   // var j = ;
-var array = [{
+/*var array = [{
  "FirstName" : "Jack",
  "Source" : {
      "Latitude" : "35",
@@ -140,17 +152,9 @@ createWalkRequest("-K2b4JpAA67aR092_Ci6", "-K2anAFNggIQt_XHSeR_");
 getRequest(function(invitations){
         console.log(invitations);
     });
-
+*/
 //array =[];
-console.log(array.length);
-for(var i =0;i<array.length;i++)
-{
- //var pp= JSON.parse(array[i]);
-$("#row12").append('<tr i align=center><td  class=user-name >'+array[i].FirstName+'invited you for a walk pool on '+array[i].ArrivingTime+'</td><td><button type="button" onclick="accept()">Accept</button></td></tr>');
 
-//console.log(pp.FirstName);
-
-}
 //console.log(rr);
    /*for (var i = 1; i <=10; i++) {
    	var str = "<tr i align=center><td  class=user-name >"+i+"</td></tr>";
