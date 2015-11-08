@@ -9,4 +9,5 @@ ref.authWithOAuthPopup("facebook", function(error, authData) {
     console.log("Authenticated successfully with payload:", authData);
   }
 });
+alert(ref);
 }
