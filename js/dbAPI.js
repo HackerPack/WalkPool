@@ -56,7 +56,7 @@ function updateAcceptance(requestID){						//Request ID accepted by the user
 function getRequest(callback) {
 	var requestData = [];
 	
-	ref.child("WalkRequest").orderByChild("UID").equalTo(req.getAuth().uid).once("value", function(requestList) {
+	ref.child("WalkRequest").orderByChild("UID").equalTo(ref.getAuth().uid).once("value", function(requestList) {
 		
 		requestList.forEach(function(request) {
 			ref.child("WalkEvent").orderByKey().equalTo(request.val().WalkEventID).once("value",function(eventSnap){
@@ -78,7 +78,7 @@ function getRequest(callback) {
 
 function getAcceptance(callback) {
 	var acceptanceData = [];
-	ref.child("WalkEvent").orderByChild("UID").equalTo(req.getAuth().uid).once("value", function(eventList) {
+	ref.child("WalkEvent").orderByChild("UID").equalTo(ref.getAuth().uid).once("value", function(eventList) {
 		
 		eventList.forEach(function(eventSnap) {
 			var eventID = eventSnap.key();
