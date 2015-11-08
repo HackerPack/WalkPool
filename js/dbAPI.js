@@ -113,13 +113,13 @@ function getAllEvents() {
 			var eventID = eventSnap.key();
 			var uid = eventSnap.val().UID;
 
-				 allEvents.push({
+				 allEvents.push('{
 					 	 "EventID" : "$eventID",
 					 	 "UID" : "$uid",
 						 "Source": {"Latitude": "$eventSnap.Source.Latitude", "Longitude": "$eventSnap.Source.Longitude"},
 						 "Destination": {"Latitude": "$eventSnap.Destination.Latitude", "Longitude": "$eventSnap.Destination.Longitude"},
 						 "ArrivingTime": "$eventSnap.ArrivingTime",
-						 "Recurring": "$eventSnap.Recurring"});
+						 "Recurring": "$eventSnap.Recurring"}');
 				});
 	});
 	console.log(allEvents[0]);
