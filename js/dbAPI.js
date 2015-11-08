@@ -113,7 +113,7 @@ function getAllEvents() {
 		eventList.forEach(function(eventSnap) {
 			var eventID = eventSnap.key();
 			ref.child("Users").orderByKey().equalTo(eventSnap.val().UID).once("value",function(userDataSnap){
-				 var userFName = userDataSnap.key();
+				 var userFName = userDataSnap.val().FirstName;
 		console.log("FNAME"+userFName);
 		console.log(eventID);
 
@@ -127,7 +127,7 @@ function getAllEvents() {
 				});
 		});
 	});
-	alert(allEvents[0]);
+	console.log(allEvents[0]);
 	return allEvents;
 }
 
