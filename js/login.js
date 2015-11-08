@@ -1,3 +1,4 @@
+var ref = new Firebase("https://brilliant-fire-4087.firebaseio.com/");
 ref.onAuth(function(authData) {
   if (authData && isNewUser) {
     // save the user's profile into the database so we can list users,
@@ -17,7 +18,7 @@ function getLName(authData){
 	return authData.facebook.cachedUserProfile.last_name;
 }
 
-function login(){
+function login(){	
 
 	ref.authWithOAuthPopup("facebook", function(error, authData) {
   		if (error) {
@@ -39,8 +40,9 @@ function logout(){
 function checkSession(){
 	authData = ref.getAuth();
 	console.log(authData);
-	if(authData){
-		window.location.href = "index.html";
+	if(authData==null)
+	{
+		login();
 	}
 }
 

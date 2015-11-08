@@ -1,6 +1,10 @@
 function initMap() {
   var origin_place_id = null;
   var destination_place_id = null;
+  var startLat = null;
+  var startLong = null;
+  var endLat = null;
+  var endLong = null;
   var travel_mode = google.maps.TravelMode.WALKING;
   var map = new google.maps.Map(document.getElementById('map'), {
     mapTypeControl: false,
@@ -48,6 +52,9 @@ function initMap() {
 
   origin_autocomplete.addListener('place_changed', function() {
     var place = origin_autocomplete.getPlace();
+    startLat = place.geometry.location.lat();
+    startLong = place.geometry.location.lng();
+    alert(place.geometry.location.lat());
     if (!place.geometry) {
       window.alert("Autocomplete's returned place contains no geometry");
       return;
@@ -63,6 +70,8 @@ function initMap() {
 
   destination_autocomplete.addListener('place_changed', function() {
     var place = destination_autocomplete.getPlace();
+    endLat = place.geometry.location.lat();
+    endLong = place.geometry.location.lng();
     if (!place.geometry) {
       window.alert("Autocomplete's returned place contains no geometry");
       return;
@@ -91,6 +100,17 @@ function initMap() {
       } else {
         window.alert('Directions request failed due to ' + status);
       }
+      alert(startLat + " " + startLong +" " + endLat +"" + endLong);
     });
   }
+}
+function dateTime() {
+  alert("Hey");
+
+  new DatePicker('.demo_time', { pickerClass: 'datepicker_vista', timePicker: true, format: 'd-m-Y @ H:i' });
+}
+function addToDatabase()
+{
+  alert("Jey");
+
 }
