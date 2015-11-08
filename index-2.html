@@ -8,9 +8,14 @@
 	<link rel="stylesheet" href="css/grid.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/touchTouch.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+	
 
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery-migrate-1.2.1.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
 	<script src="js/touchTouch.jquery.js"></script>
 	<script src="js/script.js"></script>
 	<!--[if (gt IE 9)|!(IE)]><!-->
@@ -29,7 +34,8 @@
         padding: 0;
       }
       #map {
-        height: 100%;
+        height: 40%;
+        width: 40%;
       }
 	  .controls {
   		margin-top: 10px;
@@ -130,22 +136,30 @@
     </div>
 
     <div id="map"></div>
+  <div id="datetimepicker1" class="input-append date">
+    <input data-format="dd/MM/yyyy hh:mm:ss" type="text"/>
+    <span class="add-on"> 
+    	<i data-time-icon="icon-time" data-date-icon="icon-calendar" class="glyphicon glyphicon-calendar" ></i>
+    </span>
+  </div>
 
-<!--=======footer=================================-->
-<footer id="footer">
-	<div class="container">
-		<div class="row">
-			<div class="grid_12 copyright">
-				<h2><span>Follow Us</span></h2>
-				<a href="#" class="btn bd-ra"><span class="fa fa-facebook"></span></a>
-				<a href="#" class="btn bd-ra"><span class="fa fa-tumblr"></span></a>
-				<a href="#" class="btn bd-ra"><span class="fa fa-google-plus"></span></a>
-				<pre>© <span id="copyright-year"></span> |  Privacy Policy</pre>
-			</div>
-		</div>
-	</div>
-	<div class="footer_bottom"><a href="http://www.templatemonster.com/" rel="nofollow"><img src="images/footer-logo.png" alt="logo"></a></div>
-</footer>
+  
+
+	<input type="radio" name="recurring" value="monthly" /> Monthly 
+	<input type="radio" name="recurring" value="daily" /> Daily
+	<input type="radio" name="recurring" value="weekly" /> None<br>
+
+<input type="submit" class="btn btn-default" value="Submit" onclick="addToDatabase()
+"></input>
+
+<script type="text/javascript">
+  $(function() {
+    $('#datetimepicker1').datetimepicker({
+      language: 'pt-BR'
+    });
+  });
+</script>
+
 <script>
 	$(function(){
 		$('#touch_gallery a').touchTouch();
@@ -154,5 +168,12 @@
 <script src="js/lets-walk.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQf4f8pMlnmHj__IkX_fKLcjRL5VtGMTE&signed_in=true&libraries=places&callback=initMap"
         async defer></script>
+<script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+<script src = "js/users.js"></script>
+<script src = "js/fire_base_constants.js"></script>
+<script src="js/login.js"></script>
+<script>
+	checkSession();
+</script>		
 </body>
 </html>

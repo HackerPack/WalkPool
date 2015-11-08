@@ -1,12 +1,4 @@
-var db_ref = new Firebase("https://brilliant-fire-4087.firebaseio.com");
-function add_user(authData){
-	
-	var users = db_ref.child("Users");
-	users.child(authData.uid).set({
-		First Name: authData.facebook.first_name;
-	});
-}
-
+var ref = new Firebase("https://brilliant-fire-4087.firebaseio.com/");
 function search_user(authData)
 {
 	ref.child("Users").orderByKey().equalTo(authData.uid).once("value", function(snapshot){
@@ -31,7 +23,7 @@ function createWalkEvent(eventData){						//Event details from front end
 function createWalkRequest(myEventId, inviteeEventID){		//Requester event ID, Invitee Event ID
 	var inviteeUID;
 	
-	ref.child("WalkEvent").orderByKey().equalTo(myEventId).once("value", function(snapshot){
+	ref.child("WalkEvent").orderByKey().equalTo(inviteeEventID).once("value", function(snapshot){
 		inviteeUID = snapshot.val().UID
 	});
 	
@@ -95,7 +87,7 @@ function getAcceptance() {
 					 if (invitee.val() == "true") {
 						 ref.child("Users").orderByKey().equalTo(invitee.key()).once("value",function(userDataSnap){
 							 var userFName = userDataSnap.FirstName;
-							 requestData.push(
+							 acceptanceData.push(
 									 "FirstName" : "userFName",
 									 "Source": {"Latitude": "$eventSnap.Source.Latitude", "Longitude": "$eventSnap.Source.Longitude"},
 									 "Destination": {"Latitude": "$eventSnap.Destination.Latitude", "Longitude": "$eventSnap.Destination.Longitude"},
@@ -114,5 +106,9 @@ function getAllEvents() {
 	
 }
 
-
-
+function read_user(){
+	var users = ref.child("Users");
+	users.on("child_added",function(snapshot,prevChildKey){
+		return snapshot.val();
+	});
+}
