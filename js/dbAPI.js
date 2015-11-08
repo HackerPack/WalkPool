@@ -111,10 +111,12 @@ function getAllEvents() {
 	ref.child("WalkEvent").once("value", function(eventList){
 		alert("Inside eventlist");
 		eventList.forEach(function(eventSnap) {
-		alert("Inside etlist");
 			var eventID = eventSnap.key();
 			ref.child("Users").orderByKey().equalTo(eventSnap.val().UID).once("value",function(userDataSnap){
 				 var userFName = userDataSnap.FirstName;
+		alert(userFName);
+		alert(eventID);
+		
 				 allEvents.push({
 					 	 "EventID" : "$eventID",
 						 "FirstName" : "$userFName",
