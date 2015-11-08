@@ -27,10 +27,9 @@ function createWalkRequest(myEventId, inviteeEventID){		//Requester event ID, In
 	
 	ref.child("WalkEvent").child(inviteeEventID).once("value", function(snapshot){
 		inviteeUID = snapshot.val().UID;
-	
-		/*ref.child("WalkEvent").child(myEventId).child("Invitee").update({
-				inviteeUID : "false"
-		});*/
+		var data = {};
+		data[inviteeUID.toString()] = "false";
+		ref.child("WalkEvent").child(myEventId).child("Invitee").update(data);
 		
 		ref.child("WalkRequest").push({
 			"UID" : inviteeUID,
@@ -47,10 +46,8 @@ function updateAcceptance(requestID){						//Request ID accepted by the user
 	});
 	
 	inviteeUID = ref.getAuth().uid;
-	
-	ref.child("WalkRequest").child(requestID).child("Invitee").update({
-		"$inviteeUID" : "true"
-	});
+	data[inviteeUID.toString()] = "true";
+	ref.child("WalkRequest").child(requestID).child("Invitee").update(data);
 }
 
 function getRequest(callback) {
