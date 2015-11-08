@@ -22,28 +22,23 @@ function createWalkEvent(eventData){						//Event details from front end
 	});
 }
 
-function createWalkRequest(myEventId, inviteeEventID){	
-		//Requester event ID, Invitee Event ID
+function createWalkRequest(myEventId, inviteeEventID){		//Requester event ID, Invitee Event ID
 	var inviteeUID;
-	ref.child("WalkEvent").orderByKey().equalTo(inviteeEventID.toString()).once("value", function(snapshot){
-		snapshot.forEach(function(childSnapshot)
-		{
-		console.log(childsnapshot.val());
-		console.log(childsnapshot.val().UID);
+	
+	ref.child("WalkEvent").child(inviteeEventID).once("value", function(snapshot){
+		inviteeUID = snapshot.val().UID;
+	
+		ref.child("WalkEvent").child(myEventId).child("Invitee").update({
+				inviteeUID : "false"
 		});
-		//inviteeUID = snapshot.val().UID;
-	});
-	
-	/*ref.child("WalkEvent/$myEventId/Invitee").update({
-			"$inviteeUID" : "false"
-	});*/
-	
-	ref.child("WalkRequest").push({
-		"UID" : inviteeUID,
-		"WalkEventID" : myEventId,
-		"InviteeWalkEventID" : inviteeEventID,
-		"Accepted" : "false"
-	});
+		
+		ref.child("WalkRequest").push({
+			"UID" : inviteeUID,
+			"WalkEventID" : myEventId,
+			"InviteeWalkEventID" : inviteeEventID,
+			"Accepted" : "false"
+		});
+	});	
 }
 
 function updateAcceptance(requestID){						//Request ID accepted by the user
@@ -130,33 +125,6 @@ function getAllEvents(callback) {
 	});
 }
 
-/*
-function getAllEvents(callback) {
-	var allEvents = [];
-	ref.child("WalkEvent").once("value", function(eventList){
-		eventList.forEach(function(eventSnap) {
-			var FName;
-			ref.child("Users").child(eventSnap.val().UID).once("value",function(userDataSnap){
-				FName = userDataSnap.val().FirstName;
-			});
-			
-			var eventID = eventSnap.key();
-			var eventVal = eventSnap.val();
-				 allEvents.push({
-					 	 FirstName : FName,
-					 	 EventID : eventID,
-					 	 UID : eventVal.UID,
-						 Source: {Latitude: eventVal.Source.Latitude, Longitude: eventVal.Source.Longitude},
-						 Destination: {Latitude: eventVal.Destination.Latitude, Longitude: eventVal.Destination.Longitude},
-						 ArrivingTime: eventVal.ArrivingTime,
-						 Recurring: eventVal.Recurring});
-				});
-
-			console.log(allEvents);
-			callback(allEvents);
-	});
-}*/
-
 function read_user(){
 	var users = ref.child("Users");
 	users.on("child_added",function(snapshot,prevChildKey){
@@ -164,9 +132,9 @@ function read_user(){
 	});
 }
 
-function get_name_from_uid(uid){
+function get_name_from_uid(uid, callback){
 	var user = ref.child("Users/"+uid+"/FirstName");
 	user.once("value",function(data){
-		return data.val();
+		callback(data.val());
 	});
 }
