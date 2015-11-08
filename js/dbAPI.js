@@ -125,7 +125,7 @@ function getAllEvents() {
 				});
 		});
 	});
-	alert(allEvents);
+	alert(allEvents[0]);
 	return allEvents;
 }
 
