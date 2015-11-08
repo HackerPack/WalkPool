@@ -17,8 +17,9 @@
 		<![endif]-->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
-		<script src="js/jquery.stickyheader.js"></script	>
+		<script src="js/fire_base_constants.js"></script>
 		<script src="js/dbAPI.js"></script>
+		<script src="js/authentication.js"></script>
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery-migrate-1.2.1.js"></script>
 	<script src="js/script.js"></script>
@@ -97,31 +98,10 @@
 							<th align="center" bgcolor="#31bc86" colspan=4 color="white" >Notifications</th>							
 						</tr>
 					</thead>
-					<tbody id="row">
+					<tbody id="row12">
 						
 					</tbody>
-				</table><table class="sticky-thead" style="width: 787px; opacity: 0; top: 0px;"><thead>
-						<tr>
-							<th style="width: 166px;">Name</th>
-							<th style="width: 288px;">Email</th>
-							<th style="width: 166px;">Phone</th>
-							<th style="width: 167px;">Mobile</th>
-						</tr>
-					</thead></table></div><div class="sticky-wrap"><table class="sticky-thead sticky-enabled" style="width: 100%; opacity: 0; top: 0px; margin: 0px;"><thead>
-						<tr>
-							<th style="width: 166px;">Name</th>
-							<th style="width: 288px;">Email</th>
-							<th style="width: 166px;">Phone</th>
-							<th style="width: 167px;">Mobile</th>
-						</tr>
-					</thead></table><table class="sticky-thead" style="width: 787px; opacity: 0; top: 0px;"><thead>
-						<tr>
-							<th style="width: 166px;">Name</th>
-							<th style="width: 288px;">Email</th>
-							<th style="width: 166px;">Phone</th>
-							<th style="width: 167px;">Mobile</th>
-						</tr>
-					</thead></table></div></div>				
+				</table></div></div>				
 			</div>
 			
 		</div><!-- /container -->
@@ -155,17 +135,12 @@ var array = [{
 "Recurring": 0
 }];
 
-array = getRequest();
 //array =[];
 console.log(array.length);
-if(array.length == 0)
-{
-	$("#row").append('<tr i align=center><td  class=user-name >'+'no notifications'+'</td></tr>');
-}
 for(var i =0;i<array.length;i++)
 {
  //var pp= JSON.parse(array[i]);
-$("#row").append('<tr i align=center><td  class=user-name >'+array[i].FirstName+'invited you for a walk pool on '+array[i].ArrivingTime+'</td></tr>');
+$("#row12").append('<tr i align=center><td  class=user-name >'+array[i].FirstName+'invited you for a walk pool on '+array[i].ArrivingTime+'</td><td><button type="button" onclick="accept()">Accept</button></td></tr>');
 
 //console.log(pp.FirstName);
 
