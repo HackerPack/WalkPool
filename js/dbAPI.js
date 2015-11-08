@@ -112,7 +112,7 @@ function getAllEvents() {
 		alert("Inside eventlist");
 		eventList.forEach(function(eventSnap) {
 			var eventID = eventSnap.key();
-			ref.child("Users").orderByValue().equalTo(eventSnap.val().UID).once("value",function(userDataSnap){
+			ref.child("Users/$eventSnap.val().UID").once("value",function(userDataSnap){
 				 var userFName = userDataSnap.val().FirstName;
 		console.log("FNAME"+userFName);
 		console.log(eventID);
